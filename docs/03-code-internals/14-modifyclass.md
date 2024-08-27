@@ -1,5 +1,5 @@
 ---
-title: Using modifyClass to modify core behaviour
+title: Using modifyClass to change core behaviour
 short_title: modifyClass
 id: modifyclass
 ---
@@ -48,7 +48,7 @@ However, there are some limitations. The `modifyClass` system only detects chang
 
 - simple class fields on the original implementation cannot be overridden in any way (although, as above, `@tracked` fields can be overriden by another `@tracked` field)
 
-If you find yourself wanting to do these things, then your use-case may be better satisfied by making a PR to introduce new APIs in core (e.g. plugin outlets, transformers, or bespoke APIs)
+If you find yourself wanting to do these things, then your use-case may be better satisfied by making a PR to introduce new APIs in core (e.g. plugin outlets, transformers, or bespoke APIs).
 
 ## Upgrading Legacy Syntax
 
@@ -65,7 +65,11 @@ api.modifyClass("component:some-component", {
 })
 ```
 
-This syntax is no longer recommended, and has known bugs (e.g. overriding getters or `@actions`). Any code using this syntax should be updated to use the native-class syntax described above.
+This syntax is no longer recommended, and has known bugs (e.g. overriding getters or `@actions`). Any code using this syntax should be updated to use the native-class syntax described above. In general, conversion can be done by:
+
+1. removing `pluginId` - this is no longer required
+2. Update to the modern native-class syntax described above
+3. Test your changes
 
 ## Troubleshooting
 
