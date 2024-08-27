@@ -18,7 +18,7 @@ Core's code can change at any time. And therefore, customizations made via `modi
 
 `modifyClass` takes two arguments:
 
-- `resolverName` (string) - construct this by using the type (e.g. component/controller/etc.), followed by a colon, followed by the (dasherized) filename name of the class. For example: `component:d-button`, `controller:user`, `route:application`, etc.
+- `resolverName` (string) - construct this by using the type (e.g. component/controller/etc.), followed by a colon, followed by the (dasherized) filename name of the class. For example: `component:d-button`, `component:modal/login`, `controller:user`, `route:application`, etc.
 
 - `callback` (function) - a function which receives the existing class definition, and then returns an extended version.
 
