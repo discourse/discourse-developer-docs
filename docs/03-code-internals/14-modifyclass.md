@@ -45,7 +45,6 @@ However, there are some limitations. The `modifyClass` system only detects chang
 - introducing or modifying a `constructor()` is not supported
 
   ```js
-  // NOT FUNCTIONAL - do not copy
   api.modifyClass("component:foo", (Superclass) => class extends Superclass {
     constructor(){
       // This is not supported. The constructor will be ignored
@@ -67,8 +66,12 @@ However, there are some limitations. The `modifyClass` system only detects chang
   ```js
   // Core code:
   class Foo extends Component{
-    someField = "original"; // Overriding this is not supported
-    @tracked someTrackedField; // This can be overridden by adding `@tracked someTrackedField = ` in the modifyClass call
+    // This core field cannot be overridden
+    someField = "original"; 
+
+    // This core tracked field can be overridden by including
+    // `@tracked someTrackedField = ` in the modifyClass call
+    @tracked someTrackedField = "original";
   }
   ```
 
