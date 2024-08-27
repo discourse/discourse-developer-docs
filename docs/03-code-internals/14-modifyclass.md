@@ -44,9 +44,33 @@ However, there are some limitations. The `modifyClass` system only detects chang
 
 - introducing or modifying a `constructor()` is not supported
 
+  ```js
+  // NOT FUNCTIONAL - do not copy
+  api.modifyClass("component:foo", (Superclass) => class extends Superclass {
+    constructor(){
+      // This is not supported. The constructor will be ignored
+    }
+  })
+  ```
+
 - introducing or modifying class fields is not supported (although some decorated class fields, like `@tracked` can be used)
 
+  ```js
+  api.modifyClass("component:foo", (Superclass) => class extends Superclass {
+    someField = "foo"; // NOT SUPPORTED - do not copy
+    @tracked someOtherField = "foo"; // This is ok
+  })
+  ```
+
 - simple class fields on the original implementation cannot be overridden in any way (although, as above, `@tracked` fields can be overriden by another `@tracked` field)
+
+  ```js
+  // Core code:
+  class Foo extends Component{
+    someField = "original"; // Overriding this is not supported
+    @tracked someTrackedField; // This can be overridden by adding `@tracked someTrackedField = ` in the modifyClass call
+  }
+  ```
 
 If you find yourself wanting to do these things, then your use-case may be better satisfied by making a PR to introduce new APIs in core (e.g. plugin outlets, transformers, or bespoke APIs).
 
