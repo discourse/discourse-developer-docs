@@ -1,5 +1,5 @@
 ---
-title: Using modifyClass to change core behaviour
+title: Using modifyClass to change core behavior
 short_title: modifyClass
 id: modifyclass
 ---
@@ -8,7 +8,7 @@ For advanced themes and plugins, Discourse offers the `modifyClass` system. This
 
 ## When to use `modifyClass`
 
-`modifyClass` should be a last resort, when your customization cannot be made via Discourse's more stable customization APIs (e.g. plugin-api methods, plugin outets, transformers).
+`modifyClass` should be a last resort, when your customization cannot be made via Discourse's more stable customization APIs (e.g. plugin-api methods, plugin outlets, transformers).
 
 Core's code can change at any time. And therefore, customizations made via `modifyClass` could break at any time. When using this API, you should ensure that you have controls in place to catch those issues before they reach a production site. For example, you could add automated tests to the theme/plugin, or you could use a staging site to test incoming Discourse updates against your theme/plugin.
 
@@ -46,10 +46,10 @@ However, there are some limitations. The `modifyClass` system only detects chang
 
   ```js
   api.modifyClass("component:foo", (Superclass) => class extends Superclass {
-    constructor(){
+    constructor() {
       // This is not supported. The constructor will be ignored
     }
-  })
+  });
   ```
 
 - introducing or modifying class fields is not supported (although some decorated class fields, like `@tracked` can be used)
@@ -58,14 +58,14 @@ However, there are some limitations. The `modifyClass` system only detects chang
   api.modifyClass("component:foo", (Superclass) => class extends Superclass {
     someField = "foo"; // NOT SUPPORTED - do not copy
     @tracked someOtherField = "foo"; // This is ok
-  })
+  });
   ```
 
-- simple class fields on the original implementation cannot be overridden in any way (although, as above, `@tracked` fields can be overriden by another `@tracked` field)
+- simple class fields on the original implementation cannot be overridden in any way (although, as above, `@tracked` fields can be overridden by another `@tracked` field)
 
   ```js
   // Core code:
-  class Foo extends Component{
+  class Foo extends Component {
     // This core field cannot be overridden
     someField = "original"; 
 
@@ -84,12 +84,12 @@ In the past, modifyClass was called using an object-literal syntax like this:
 ```js
 // Outdated syntax - do not use
 api.modifyClass("component:some-component", {
-  someFunction(){
+  someFunction() {
     const original = this._super();
     return original + " some change";
   }
   pluginId: "some-unique-id"
-})
+});
 ```
 
 This syntax is no longer recommended, and has known bugs (e.g. overriding getters or `@actions`). Any code using this syntax should be updated to use the native-class syntax described above. In general, conversion can be done by:
