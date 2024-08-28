@@ -152,7 +152,7 @@ In theme/plugin development, there are two ways this error is normally introduce
     name: "extend-user-for-my-plugin",
     before: "inject-discourse-objects",
 
-    initializeWithApi(api){
+    initializeWithApi(api) {
       api.modifyClass("model:user", {
         myNewUserFunction() {
           return "hello world";
