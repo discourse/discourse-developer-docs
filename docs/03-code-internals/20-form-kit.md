@@ -15,26 +15,35 @@ Every form is composed of one or multiple fields, representing the value, valida
 Here is the most basic example of a form:
 
 ```gjs
+import Component from "@glimmer/component";
+import { action } from "@ember/object";
 import Form from "discourse/form";
 
-<template>
-  <Form as |form|>
-    <form.Field
-      @name="username"
-      @title="Username"
-      @validation="required"
-      as |field|
-    >
-      <field.Input />
-    </form.Field>
+export default class MyForm extends Component {
+  @action
+  handleSubmit(data) {
+    // do something with data
+  }
 
-    <form.Field @name="age" @title="Age" as |field|>
-      <field.Input @type="number" />
-    </form.Field>
+  <template>
+    <Form @onSubmit={{this.handleSubmit}} as |form|>
+      <form.Field
+        @name="username"
+        @title="Username"
+        @validation="required"
+        as |field|
+      >
+        <field.Input />
+      </form.Field>
 
-    <form.Submit />
-  </Form>
-</template>
+      <form.Field @name="age" @title="Age" as |field|>
+        <field.Input @type="number" />
+      </form.Field>
+
+      <form.Submit />
+    </Form>
+  </template>
+}
 ```
 
 # Form
