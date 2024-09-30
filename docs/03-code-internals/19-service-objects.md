@@ -481,11 +481,11 @@ end
 ```
 
 There are some rules to keep in mind when writing a policy object:
-- it has to inherit from `Service::PolicyBase`.
-- it has to define two methods: `#call` and `#reason`.
-- the context object is automatically injected in the policy, and is available by calling `#context` (like in a service).
-- likewise, the guardian object is also automatically available as `#guardian`.
-- by convention, it should be namespaced under its concept followed by the `Policy` namespace: for our current example, it means `User::Policy::` which maps to `app/services/user/policy/` on the filesystem.
+- It must inherit from `Service::PolicyBase`.
+- It must define two methods: `#call` and `#reason`.
+- The context object is automatically injected in the policy, and is available by calling `#context` (like in a service).
+- The guardian object is also automatically available as `#guardian`.
+- By convention, it should be namespaced under its concept followed by the `Policy` namespace: for our current example, it means `User::Policy::` which maps to `app/services/user/policy/` on the filesystem.
 
 > 💡 To keep things short and clear, feel free to use [`delegate`](https://api.rubyonrails.org/classes/Module.html#method-i-delegate) extensively.
 
