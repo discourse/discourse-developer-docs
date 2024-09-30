@@ -523,10 +523,10 @@ Of course, this is a very basic example, you can do more complex things in an ac
 You should not need anything more than that to work with an action, but if you want to use some advanced features of `dry-initializer` (like coercion), just [take a look at their docs](https://dry-rb.org/gems/dry-initializer).
 
 Some rules to keep in mind when writing an action:
-- it has to inherit from `Service::ActionBase`.
-- it has to define one method: `#call`.
-- prefer `option` over `param` to define arguments, as it’s a bit more self-documenting on the caller side. It also allows you to use the [hash shorthand syntax](https://bugs.ruby-lang.org/issues/17292).
-- by convention, it should be namespaced under its concept followed by the `Action` namespace: for our current example, it means `User::Action::` which maps to `app/services/user/action/` on the filesystem.
+- It must inherit from `Service::ActionBase`.
+- It must define one method: `#call`.
+- You should prefer `option` over `param` to define arguments, as it’s a bit more self-documenting on the caller side. It also allows you to use the [hash shorthand syntax](https://bugs.ruby-lang.org/issues/17292).
+- By convention, it should be namespaced under its concept followed by the `Action` namespace: for our current example, it means `User::Action::` which maps to `app/services/user/action/` on the filesystem.
 
 > 💡 To keep things short and clear, feel free to use [`delegate`](https://api.rubyonrails.org/classes/Module.html#method-i-delegate) extensively.
 
