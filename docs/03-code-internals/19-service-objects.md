@@ -100,7 +100,9 @@ Here, you can fetch (or instantiate) a model as you see fit. If the step returns
 
 This step is also compatible with collections: if a collection is fetched but empty, the execution flow will stop.
 
-Finally, you can also provide an `ActiveRecord` relation. The step won’t load records but will determine if the relation will return any records. If there are none, the execution flow will stop.
+You can also provide an `ActiveRecord` relation. The step won’t load records but will determine if the relation will return any records. If there are none, the execution flow will stop.
+
+Sometimes, you need to fetch a model (or a collection of models), but it’s ok if it’s empty. For those cases, you can use the `optional: true` option allowing the execution flow to continue even if the model returns a falsy value.
 
 ### `policy`
 
@@ -308,7 +310,7 @@ The step will fail if the model is `nil`, empty or invalid (in the case of an `A
 - *class_name*: a policy class to implement the logic instead of defining the step in the service. Defaults to `nil`.
 
 This step declares the use of a policy. A policy is just arbitrary code, and the step will fail if the policy result is falsy.
-If you have a rather complex policy, it’s better to use a policy class. It needs to inherit from `Service::PolicyBase` and implement `#call` and `#reason` as using a policy class allows explaining in more details why the policy failed through the use of the `#reason` method. A complete example can be found in the [`Chat::CreateDirectMessageChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_direct_message_channel.rb#L30) service.
+If you have a rather complex policy, it’s better to use a policy class. It needs to inherit from `Service::PolicyBase` and implement `#call` and `#reason` as using a policy class allows explaining in more details why the policy failed through the use of the `#reason` method. A complete example can be found in the [`Chat::DirectMessageChannel::Policy::MaxUsersExcess`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/direct_message_channel/policy/max_users_excess.rb#L3) class used by the [`Chat::CreateDirectMessageChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_direct_message_channel.rb#L30) service.
 
 The step will fail if the policy returns a falsy value. Its result object can be inspected by accessing the `result.policy.<name>` key of the main result object. The policy result object exposes one key:
 - *reason*: the reason why the policy failed if a policy class was used.
@@ -475,7 +477,7 @@ class User::Policy::CanUpdateUsername < Service::PolicyBase
 
   def reason
     # Here we can put more complex logic to dynamically output a reason, this is just an example
-    "Can't edit username"
+    I18n.t("cannot_edit_username")
   end
 end
 ```
@@ -497,6 +499,7 @@ policy :can_update_username, class_name: User::Policy::CanUpdateUsername
 ## Actions
 
 When a step starts becoming too complex, like it has too many branching statements for example, then it’s time to extract all that logic to a dedicated class. That logic could live in a model for instance, but when in doubt, just create a new action.
+
 An action is just a small class that responds to a `.call` method by convention. What happens inside is up to you. The idea, however, is to execute an action (hence the name) with minimal overhead. It means an action should not validate data, for example. It should be called with valid objects only, thus being able to work with them right away. It also means that an action should not fail. You can think of an action as a bare-bones service without all the bells and whistles. Also, an action can be reused by different services.
 
 Here again, it’s relatively simple to create a new action. Let’s take as an example our `log` step:
@@ -516,9 +519,9 @@ end
 ```
 Of course, this is a very basic example, you can do more complex things in an action. A real-world example can be found in [`User::Action::TriggerPostAction`](https://github.com/discourse/discourse/blob/main/app/services/user/action/trigger_post_action.rb).
 `Service::ActionBase` comes with [`Dry::Initializer`](https://dry-rb.org/gems/dry-initializer) which provides a nice mini-DSL:
-- use `param :my_arg` to declare a required argument named `my_arg`.
-- use `option :my_arg` to declare a required named argument named `my_arg`.
-- use `optional: true` to declare the argument optional (for instance, `option :my_arg, optional: true`).
+- Use `param :my_arg` to declare a required positional argument named `my_arg`.
+- Use `option :my_arg` to declare a required keyword argument named `my_arg`.
+- Use `optional: true` to declare the argument optional (for instance, `option :my_arg, optional: true`).
 
 You should not need anything more than that to work with an action, but if you want to use some advanced features of `dry-initializer` (like coercion), just [take a look at their docs](https://dry-rb.org/gems/dry-initializer).
 
