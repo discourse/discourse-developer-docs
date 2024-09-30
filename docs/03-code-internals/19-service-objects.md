@@ -80,7 +80,7 @@ Without knowing how services work, you can probably guess what’s happening her
 
 ### What’s a step?
 
-This is the basic unit of a service. There are generic one (`step`) and specialized ones (`contract`, `model`, etc.), and they’re all steps.
+This is the basic unit of a service. There is a generic one (`step`) and specialized ones (`contract`, `model`, etc.), and they’re all steps.
 
 Steps are defined *in the order they will be called*. Each step will call a corresponding method and, depending on its return value, will continue or halt the execution of the service. Most steps rely on returning a value, and *not raising an exception* (otherwise, you’ll break the execution flow).
 
