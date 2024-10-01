@@ -519,7 +519,6 @@ end
 ```
 Of course, this is a very basic example, you can do more complex things in an action. A real-world example can be found in [`User::Action::TriggerPostAction`](https://github.com/discourse/discourse/blob/main/app/services/user/action/trigger_post_action.rb).
 `Service::ActionBase` comes with [`Dry::Initializer`](https://dry-rb.org/gems/dry-initializer) which provides a nice mini-DSL:
-- Use `param :my_arg` to declare a required positional argument named `my_arg`.
 - Use `option :my_arg` to declare a required keyword argument named `my_arg`.
 - Use `optional: true` to declare the argument optional (for instance, `option :my_arg, optional: true`).
 
