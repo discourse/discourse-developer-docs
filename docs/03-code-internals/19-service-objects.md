@@ -34,20 +34,18 @@ Here’s a simplified service to update a user’s username which demonstrates a
 class User::UpdateUsername
   include Service::Base
 
-  contract
-  model :user
-  policy :can_update_username
-  transaction do
-    step :update
-    step :log
-  end
-
-  class Contract
+  contract do
     attribute :id, :integer
     attribute :username, :string
 
     validates :id, presence: true
     validates :username, presence: true, format: { with: /\A[a-zA-Z0-9]+\z/ }
+  end
+  model :user
+  policy :can_update_username
+  transaction do
+    step :update
+    step :log
   end
 
   private
@@ -114,7 +112,7 @@ Usually, a policy is related to some state on one of the service models and/or t
 
 This is one of the most powerful steps. Its main purpose is to validate the incoming data before feeding it to the models and to the service at a more global level. This is actually `ActiveModel` validations but applied to the incoming parameters.
 
-By default, this step will run coercions and validations defined in the `Contract` class. If the contract isn’t valid (at least one validation failed), then the execution flow will stop.
+This step will run coercions and validations defined in the provided block. If the contract isn’t valid (at least one validation failed), then the execution flow will stop.
 
 ### `transaction`
 
@@ -149,7 +147,7 @@ def update
   User::UpdateUsername.call do
     on_success { render(json: success_json) }
     on_failure { render(json: failed_json, status: 422) }
-    on_failed_contract { render(json: failed_json.merge(errors: contract.errors.full_messages), status: 400) }
+    on_failed_contract { |contract| render(json: failed_json.merge(errors: contract.errors.full_messages), status: 400) }
     on_model_not_found(:user) { raise Discourse::NotFound }
     on_failed_policy(:can_update_username) { raise Discourse::InvalidAccess.new }
   end
@@ -276,14 +274,16 @@ This matcher expects the service to succeed.
 
 ## Steps
 
-### `contract(name = :default, class_name: self::Contract, default_values_from: nil)`
+### `contract(name = :default, default_values_from: nil, &block)`
 
 **Arguments**
 - *name*: the name of the contract, in the case there is more than one. Defaults to `default`.
-- *class_name*: the class to use when not using the default one. Defaults to `self::Contract`.
 - *default_values_from*: name of a model to use to pre-fill the contract values. This is useful when you want some values of a model to be updated through a contract while applying other default values. A real-world example is available in the [`Chat::UpdateChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/update_channel.rb#L37) service.
+- *block*: the block containing all the validations, attribute definitions, etc.
 
 This step declares the use of a contract to validate input parameters. Parameters provided to the service will be passed to the contract if their name matches the attributes defined in the contract.
+
+Under the hood, a class for the contract will be automatically created, allowing easy testing. The default contract will result in `Contract`, otherwise it will prepend the name used for the contract (for `contract(:user_avatar)`, this will give `UserAvatarContract`).
 
 If the contract is invalid, it will stop the execution of the service. Its result object can be inspected by accessing the `result.contract.<name>` key of the main result object. The contract result object exposes two keys:
 - *errors*: the errors returned by the contract.
@@ -439,9 +439,9 @@ The main purpose of a contract is to validate the incoming data before feeding i
 
 A contract is actually an `ActiveModel` object, so all the [API of the latter](https://api.rubyonrails.org/classes/ActiveModel/Attributes.html) is available. Anyway, let’s see how to define and use a contract inside a service.
 
-To define a service contract, just declare a `Contract` class:
+To define a service contract, just call `contract` and open a block:
 ```ruby
-class Contract
+contract do
   attribute :id, :integer
   attribute :username, :string
 
@@ -460,7 +460,7 @@ Here, all the API from `ActiveModel` is available. In this example, we define we
 
 Then, we define validations, exactly like you would in an `ActiveRecord` model. Here, we’re checking for `id` and `username` not being blank and that `username` respects an expected format.
 
-Another thing that is available in a contract, since it’s an `ActiveModel` object, are validation callbacks. If you need to manipulate the attribute values, you can do so by calling `before_validation`. There are examples in the codebase, like in the [`Chat::CreateCategoryChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_category_channel.rb#L42) service.
+Another thing that is available in a contract, since it’s an `ActiveModel` object, are validation callbacks. If you need to manipulate the attribute values, you can do so by calling `before_validation`. There are examples in the codebase, like in the [`Chat::CreateCategoryChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_category_channel.rb#L40) service.
 
 ## Policy objects
 
