@@ -144,7 +144,7 @@ Each step will store its outcome in the result object, accessible through specia
 This feature makes the use of a service a breeze. Continuing with our `User::UpdateUsername` service, this is how we could use it inside a controller (but it can work anywhere, not just in controllers):
 ```ruby
 def update
-  User::UpdateUsername.call do
+  User::UpdateUsername.call(service_params) do
     on_success { render(json: success_json) }
     on_failure { render(json: failed_json, status: 422) }
     on_failed_contract { |contract| render(json: failed_json.merge(errors: contract.errors.full_messages), status: 400) }
@@ -374,17 +374,15 @@ Merges the given context into the current one.
 
 The block form of `.call` can be used anywhere (a controller action, a job, another class, etc.). The provided actions will be evaluated in the order they appear, and the execution will stop at the first responder. The only exception to this is `on_failure` as it will always be executed last.
 
-When using a block of actions, some magic will happen to simplify things even more, especially when the service is called inside a controller. The controller `params` will be automatically injected into the service context as well as the `guardian` object if it’s defined.
-
 ### `.call(context = {}, &actions)`
 
 **Arguments**
-- *context*: the initial context to provide to the service. Values defined here will take precedence over `params` from the controller.
+- *context*: the initial context to provide to the service. If the service is called from a controller, you can use the `service_params` helper which will return `params` merged with the `guardian` object.
 - *actions*: the block containing the steps to match on.
 
 *Example*
 ```ruby
-MyService.call(extra_data: "data") do
+MyService.call(**service_params, extra_data: "data") do
   on_success { do_something }
   on_failure { handle_generic_failure }
 end
@@ -550,7 +548,7 @@ end
 - A good rule of thumb is to extract any logic that becomes relatively complex into dedicated objects. They can be models, PORO, actions, etc. Just don’t try to always pack everything into the service itself.
 - Likewise, avoid utility methods in a service. A service should only have step definitions. If some processing is needed, then it can probably be done in a contract, an action or extracted somewhere else.
 - If an action is pretty complex (it has a lot of edge cases or several branching statements, for example), test it in isolation instead of testing it directly in the service specs. Then in the service specs, just ensure that action is properly called.
-- When defining a method for a step, don’t provide default parameters, the framework won’t allow it. If you need a default value for something, it’s probably best to declare it in the contract.
+- When defining a method for a step, don’t provide default parameters, the framework won’t allow it. If you need a default value for something, it’s probably best to declare it in a contract.
 - Try to follow the steps order when writing your methods or your tests.
 
 # Debugging
