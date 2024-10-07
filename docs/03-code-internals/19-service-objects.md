@@ -363,13 +363,6 @@ Marks the context as failed and raises a `Service::Base::Failure` exception.
 
 Marks the context as failed without raising an exception.
 
-### `merge(other_context = {})`
-
-**Arguments**
-- *other_context*: the context to merge into the current one.
-
-Merges the given context into the current one.
-
 ## Calling a service with a block
 
 The block form of `.call` can be used anywhere (a controller action, a job, another class, etc.). The provided actions will be evaluated in the order they appear, and the execution will stop at the first responder. The only exception to this is `on_failure` as it will always be executed last.
