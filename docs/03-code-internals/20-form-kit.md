@@ -1412,7 +1412,7 @@ Asserts that the `field` has a specific error.
 
 **Parameters**
 
-- `error` (string): The error messag on the field.
+- `error` (string): The error message on the field.
 - `message` (string) [optional]: The description of the test.
 
 **Example**
