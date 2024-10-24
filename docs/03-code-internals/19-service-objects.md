@@ -34,7 +34,7 @@ Here’s a simplified service to update a user’s username which demonstrates a
 class User::UpdateUsername
   include Service::Base
 
-  contract do
+  params do
     attribute :id, :integer
     attribute :username, :string
 
@@ -50,16 +50,16 @@ class User::UpdateUsername
 
   private
 
-  def fetch_user(contract:)
-    User.find_by(id: contract.id)
+  def fetch_user(params:)
+    User.find_by(id: params[:id])
   end
 
   def can_update_username(guardian:, user:)
     guardian.can_edit_username?(user)
   end
 
-  def update(contract:, user:)
-    user.update!(username: contract.username)
+  def update(params:, user:)
+    user.update!(username: params[:username])
   end
 
   def log(guardian:, user:)
@@ -78,7 +78,7 @@ Without knowing how services work, you can probably guess what’s happening her
 
 ### What’s a step?
 
-This is the basic unit of a service. There is a generic one (`step`) and specialized ones (`contract`, `model`, etc.), and they’re all steps.
+This is the basic unit of a service. There is a generic one (`step`) and specialized ones (`params`, `model`, etc.), and they’re all steps.
 
 Steps are defined *in the order they will be called*. Each step will call a corresponding method and, depending on its return value, will continue or halt the execution of the service. Most steps rely on returning a value, and *not raising an exception* (otherwise, you’ll break the execution flow).
 
@@ -108,11 +108,11 @@ This step will execute the method of the same name. You can put arbitrary code h
 
 Usually, a policy is related to some state on one of the service models and/or to the current user (if any).
 
-### `contract`
+### `params`
 
 This is one of the most powerful steps. Its main purpose is to validate the incoming data before feeding it to the models and to the service at a more global level. This is actually `ActiveModel` validations but applied to the incoming parameters.
 
-This step will run coercions and validations defined in the provided block. If the contract isn’t valid (at least one validation failed), then the execution flow will stop.
+This step will run coercions and validations defined in the provided block. If the underlying contract isn’t valid (at least one validation failed), then the execution flow will stop.
 
 ### `transaction`
 
@@ -187,31 +187,27 @@ RSpec.describe User::UpdateUsername do
       it { is_expected.to fail_a_contract }
     end
 
-    context "when contract is valid" do
-      context "when model is not found" do
-        let(:user_id) { 0 }
+    context "when model is not found" do
+      let(:user_id) { 0 }
 
-        it { is_expected.to fail_to_find_a_model(:user) }
+      it { is_expected.to fail_to_find_a_model(:user) }
+    end
+
+    context "when current user cannot update user's username" do
+      let(:guardian) { Guardian.new }
+
+      it { is_expected.to fail_a_policy(:can_update_username) }
+    end
+
+    context "when everything’s ok" do
+      it { is_expected.to run_successfully }
+
+      it "updates user's username" do
+        expect { result }.to change { user.reload.username }.to(username)
       end
 
-      context "when model exists" do
-        context "when current user cannot update user's username" do
-          let(:guardian) { Guardian.new }
-
-          it { is_expected.to fail_a_policy(:can_update_username) }
-        end
-
-        context "when current user can update user's username" do
-          it { is_expected.to run_successfully }
-
-          it "updates user's username" do
-            expect { result }.to change { user.reload.username }.to(username)
-          end
-
-          it "logs the action" do
-            expect { result }.to change { UserHistory.count }.by(1)
-          end
-        end
+      it "logs the action" do
+        expect { result }.to change { UserHistory.count }.by(1)
       end
     end
   end
@@ -219,7 +215,7 @@ end
 ```
 First, and because a contract is present, we test it using a dedicated `describe` block. Since a contract uses `ActiveModel` under the hood, the simplest way to test it is to use Shoulda Matchers.
 
-Then, we use a `describe` block for the `.call` method, which is how the service is run. We’re using a `context` for each possible branching. It’s quite easy as we just have to follow the steps we defined in the service. You can see we’re not testing all the possible values to have the contract fail: that’s because it’s tested extensively above, so here we’re just ensuring the `contract` step is properly called and if a bad value is provided, then it will stop the execution of the service.
+Then, we use a `describe` block for the `.call` method, which is how the service is run. We’re using a `context` for each possible branching. It’s quite easy as we just have to follow the steps we defined in the service. You can see we’re not testing all the possible values to have the contract fail: that’s because it’s tested extensively above, so here we’re just ensuring the `params` step is properly called and if a bad value is provided, then it will stop the execution of the service.
 For the other steps, if they can fail, then they should have a context using a dedicated matcher.
 
 The `run_successfully` matcher ensures the service succeeded (`result.success?` is `true`) and will provide some debugging information if that’s not the case.
@@ -228,12 +224,12 @@ In the event of a matcher failing, it will output details about the result objec
 ```
 Failures:
 
-  1) User::UpdateUsername.call when contract is valid when model exists when current user cannot update user's username is expected to fail a policy named 'can_update_username'
+  1) User::UpdateUsername.call when current user cannot update user's username is expected to fail a policy named 'can_update_username'
      Failure/Error: it { is_expected.to fail_a_policy(:can_update_username) }
 
        Expected policy 'can_update_username' (key: 'result.policy.can_update_username') to fail but it succeeded.
 
-       [1/6] [contract] 'default' ✅
+       [1/6] [params] 'default' ✅
        [2/6] [model] 'user' ✅
        [3/6] [policy] 'can_update_username' ✅ ⚠️  <= expected to return false but got true instead
        [4/6] [transaction]
@@ -274,7 +270,7 @@ This matcher expects the service to succeed.
 
 ## Steps
 
-### `contract(name = :default, default_values_from: nil, &block)`
+### `params(name = :default, default_values_from: nil, &block)`
 
 **Arguments**
 - *name*: the name of the contract, in the case there is more than one. Defaults to `default`.
@@ -283,7 +279,7 @@ This matcher expects the service to succeed.
 
 This step declares the use of a contract to validate input parameters. Parameters provided to the service will be passed to the contract if their name matches the attributes defined in the contract.
 
-Under the hood, a class for the contract will be automatically created, allowing easy testing. The default contract will result in `Contract`, otherwise it will prepend the name used for the contract (for `contract(:user_avatar)`, this will give `UserAvatarContract`).
+Under the hood, a class for the contract will be automatically created, allowing easy testing. The default contract will result in `Contract`, otherwise it will prepend the name used for the contract (for `params(:user_avatar)`, this will give `UserAvatarContract`).
 
 If the contract is invalid, it will stop the execution of the service. Its result object can be inspected by accessing the `result.contract.<name>` key of the main result object. The contract result object exposes two keys:
 - *errors*: the errors returned by the contract.
@@ -430,9 +426,9 @@ The main purpose of a contract is to validate the incoming data before feeding i
 
 A contract is actually an `ActiveModel` object, so all the [API of the latter](https://api.rubyonrails.org/classes/ActiveModel/Attributes.html) is available. Anyway, let’s see how to define and use a contract inside a service.
 
-To define a service contract, just call `contract` and open a block:
+To define a service contract, just call `params` and open a block:
 ```ruby
-contract do
+params do
   attribute :id, :integer
   attribute :username, :string
 
@@ -451,7 +447,7 @@ Here, all the API from `ActiveModel` is available. In this example, we define we
 
 Then, we define validations, exactly like you would in an `ActiveRecord` model. Here, we’re checking for `id` and `username` not being blank and that `username` respects an expected format.
 
-Another thing that is available in a contract, since it’s an `ActiveModel` object, are validation callbacks. If you need to manipulate the attribute values, you can do so by calling `before_validation`. There are examples in the codebase, like in the [`Chat::CreateCategoryChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_category_channel.rb#L40) service.
+Another thing that is available in a contract, since it’s an `ActiveModel` object, are validation callbacks. If you need to manipulate the attribute values, you can do so by calling `before_validation` or `after_validation`. There are examples in the codebase, like in the [`Chat::CreateCategoryChannel`](https://github.com/discourse/discourse/blob/main/plugins/chat/app/services/chat/create_category_channel.rb#L40) service.
 
 ## Policy objects
 
@@ -553,7 +549,7 @@ The main tool to help debugging a service is the steps inspector. However, it’
 This small tool is very useful to debug the outcome of a service. The `StepsInspector` class is not meant to be used directly, as there’s a shortcut available directly on any result object.
 Call `#inspect_steps` on a result object, and it will output all the steps of the service with their current state. This is how it looks like for the `User::UpdateUsername` service we’re using in our examples:
 ```
-[1/6] [contract] 'default' ✅
+[1/6] [params] 'default' ✅
 [2/6] [model] 'user' ✅
 [3/6] [policy] 'can_update_username' ❌
 [4/6] [transaction]
@@ -572,7 +568,7 @@ end
 ```
 
 In the case of a more complex result object, like with a contract, it could be tedious to easily understand what went wrong. The steps inspector provides a method to output the error from the failing step.
-Let’s say we call our `User::UpdateUsername` service without providing any parameters. It would then fail at the contract step.
+Let’s say we call our `User::UpdateUsername` service without providing any parameters. It would then fail at the `params` step.
 Calling `#error` on the inspector (`result.inspect_steps.error`) now outputs this:
 ```
 #<ActiveModel::Errors [#<ActiveModel::Error attribute=id, type=blank, options={}>, #<ActiveModel::Error attribute=username, type=blank, options={}>, #<ActiveModel::Error attribute=username, type=invalid, options={:value=>nil}>]>
@@ -583,7 +579,7 @@ Here we can see `ActiveModel` errors, telling us `id` and `username` were blank.
 
 Here’s a recap of what will output `#error` for the different steps:
 - *model*: when the model is an `ActiveRecord` one, it outputs its validation errors. Otherwise, it outputs the reason why it failed, probably a `Model not found` error.
-- *contract*: outputs the validation errors followed by the provided parameters.
+- *params*: outputs the validation errors followed by the provided parameters.
 - *policy*: doesn’t output anything for a simple policy. When a policy object is used, then it outputs its `reason`.
 - *step*: outputs the message provided to `fail!`.
 
