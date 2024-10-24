@@ -71,6 +71,10 @@ class User::UpdateUsername
   end
 end
 ```
+And here is an example on how you could call such a service:
+```ruby
+User::UpdateUsername.call(params: {id: 1, username: "username"}, guardian: Discourse.system_user.guardian)
+```
 
 Without knowing how services work, you can probably guess what’s happening here. Let’s dive in.
 
@@ -118,6 +122,10 @@ This step will run coercions and validations defined in the provided block. If t
 
 This step is a bit special, as it will wrap any other steps defined in its block inside a SQL transaction.
 
+### `options`
+
+This step is another special one, as it’s similar to a contract (without the validations part), but for options your service can take. This is useful if you need to change your service behavior depending on certain conditions. Also, that step can’t fail.
+
 ### Steps arguments
 
 Each step is called with the service context. To access a value in it, just provide its key as a keyword argument.
@@ -160,7 +168,7 @@ This declarative way helps decoupling what is handled by the caller (here a cont
 
 # Testing
 
-To simplify testing, custom RSpec matchers have been added. It’s also considered a best practice to always follow the same structure. Here is how we could test our `User::UpdateUsername` service:
+To simplify testing, custom RSpec matchers have been added. It’s also considered a best practice to always follow the same structure. Remember to test the caller class too. If your service is called from a controller, for example, that controller should be tested with a request spec. Following the various outcome blocks will help to know what to test. Here is how we could test our `User::UpdateUsername` service:
 ```ruby
 RSpec.describe User::UpdateUsername do
   describe described_class::Contract, type: :model do
@@ -239,6 +247,8 @@ Failures:
      # ./spec/rails_helper.rb:497:in `block (2 levels) in <top (required)>'
      # /home/discourse/.bundle/gems/ruby/3.3.0/gems/webmock-3.23.1/lib/webmock/rspec.rb:39:in `block (2 levels) in <top (required)>'
 ```
+
+TODO: example of a request spec?
 
 ### Available matchers
 
