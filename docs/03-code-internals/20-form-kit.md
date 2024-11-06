@@ -1843,7 +1843,7 @@ field.refuse
 
 ### upload_image
 
-Takes an image path on the filesystem and uploads it for the field. Only available for: [image](/docs/guides/frontend/form-kit/controls/image).
+Takes an image path on the filesystem and uploads it for the field. Only available for the `Image` control.
 
 **Example**
 
