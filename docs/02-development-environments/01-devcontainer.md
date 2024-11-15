@@ -22,7 +22,7 @@ Dev Containers can be used in a number of different IDEs, or directly using thei
 
 1. In VSCode, use `File` -> `Open Folder`, then choose the Discourse directory
 
-1. Open the folder in its Dev Container. This can be done via the popup prompt, or by opening the command pallette (Cmd/Ctrl + Shift + P) and searching for "Open folder in container..."
+1. Open the folder in its Dev Container. This can be done via the popup prompt, or by opening the command palette (<kbd>Cmd/Ctrl + Shift + P</kbd>) and searching for "Open folder in container..."
 
 1. If this is your first time launching a container, you will be prompted to install and start Docker Desktop. Once complete, go back to VSCode re-run "Open folder in container..."
 
