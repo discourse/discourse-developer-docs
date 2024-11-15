@@ -1,8 +1,7 @@
 ---
-title: Developing Discourse using a 'Dev Container'
+title: Developing Discourse using a Dev Container
 short_title: Dev Container
 id: dev-container
-
 ---
 
 [Dev Containers](https://containers.dev/) is an open standard for configuring a development environment inside a container. This almost entirely eliminates the need to install/configure Discourse-specific tools/dependencies on your local machine, and makes it very easy to keep up-to-date as Discourse evolves over time.
@@ -38,9 +37,9 @@ Dev Containers can be used in a number of different IDEs, or directly using thei
 
 ## Applying config/container updates
 
-Every so often, the devcontainer config and the associated container image will be updated. VSCode should prompt you to "rebuild" to apply the changes. Alternatively, you can run "Dev Containers: Rebuild Container" from the VSCode command palette. The working directory, and your Redis/Postgres data will be preserved accross rebuilds.
+Every so often, the devcontainer config and the associated container image will be updated. VSCode should prompt you to "rebuild" to apply the changes. Alternatively, you can run "Dev Containers: Rebuild Container" from the VSCode command palette. The working directory, and your Redis/Postgres data will be preserved across rebuilds.
 
-If you'd like to start from scratch with fresh database, you'll need to delete the `discourse-pg` and `discourse-redis` docker volumes. This can be done from the 'Remote Explorer' tab of the VSCode sidebar.
+If you'd like to start from scratch with fresh database, you'll need to delete the `discourse-pg` and `discourse-redis` docker volumes. This can be done from the "Remote Explorer" tab of the VSCode sidebar.
 
 Discourse's sample vscode `.vscode/settings.json` and `.vscode/tasks.json` will be copied when you first boot the codespace. From that point forward, if you want to use the latest sample config, you'll need to manually copy `.vscode/settings.json.sample` to `.vscode/settings.json`.
 
