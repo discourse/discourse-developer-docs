@@ -38,7 +38,7 @@ Dev Containers can be used in a number of different IDEs, or directly using thei
 
 ## Applying config/container updates
 
-Every so often, the devcontainer config and the associated container image will be updated. VSCode should prompt you to 'rebuild' to apply the changes. Alternatively, you can run "Dev Containers: Rebuild Container" from the VSCode command palette. The working directory, and your Redis/Postgres data will be preserved accross rebuilds.
+Every so often, the devcontainer config and the associated container image will be updated. VSCode should prompt you to "rebuild" to apply the changes. Alternatively, you can run "Dev Containers: Rebuild Container" from the VSCode command palette. The working directory, and your Redis/Postgres data will be preserved accross rebuilds.
 
 If you'd like to start from scratch with fresh database, you'll need to delete the `discourse-pg` and `discourse-redis` docker volumes. This can be done from the 'Remote Explorer' tab of the VSCode sidebar.
 
