@@ -8,6 +8,7 @@ id: app-events-triggers
 
 ## AppEvents
 The AppEvent system in Discourse provides a pub/sub mechanism for handling UI updates and component interactions - and these events are triggered via calls of `AppEvent.trigger`.
+
 This topic consolidates a list of all such event triggers and their arguments, along with line-of-code references to the Discourse source code.
 
 
