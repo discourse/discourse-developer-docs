@@ -27,6 +27,8 @@ Taking the `composer:open` event, we can search for `appEvents.on("composer:open
 You would then refer to the definition of the callback function `this._findMessages` to understand what happens when the `composer:opened` event is triggered. This callback function can take in arguments passed in from the trigger of the event to be processed within the scope of the function.
 
 
+## List of AppEvent Triggers
+
 ### ace
 #### ace:resize [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/admin/addon/components/admin-theme-editor.js#L109)
 
