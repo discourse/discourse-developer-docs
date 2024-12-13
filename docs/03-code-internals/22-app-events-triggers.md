@@ -6,10 +6,25 @@ id: app-events-triggers
 
 <div data-theme-toc="true"> </div>
 
-## AppEvents
+# AppEvents
 The AppEvent system in Discourse provides a pub/sub mechanism for handling UI updates and component interactions - and these events are triggered via calls of `AppEvent.trigger`.
 
 This topic consolidates a list of all such event triggers and their arguments, along with line-of-code references to the Discourse source code.
+
+## How to figure out what happens on an event trigger
+
+AppEvent is based on the Ember's Evented class, and similarly, events are handled by [the `on` method](https://api.emberjs.com/ember/5.12/classes/Evented/methods/on?anchor=on). 
+
+Once the specific AppEvent trigger is identified, you may search in the source code for the corresponding `.on` method with the event name as the first argument.
+
+This method should have an event handler function passed in as the last argument for executing any necessary logic upon trigger of the event.
+
+Taking the `composer:open` event, we can search for `appEvents.on("composer:open"`. This could lead us to 1 or more places in the code where the event is handled. Each of these would execute a callback function whenever the event is triggered, for example:
+
+```
+    this.appEvents.on("composer:opened", this, this._findMessages);
+```
+You would then refer to the definition of the callback function `this._findMessages` to understand what happens when the `composer:opened` event is triggered. This callback function can take in arguments passed in from the trigger of the event to be processed within the scope of the function.
 
 
 ### ace
