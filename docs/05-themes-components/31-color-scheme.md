@@ -1,16 +1,16 @@
 ---
-title: Create and share a color scheme
-short_title: Color scheme
-id: color-scheme
+title: Create and share a color palette
+short_title: Color palette
+id: color-palette
 
 ---
 <div data-theme-toc="true"> </div>
 
-Discourse now supports importing color schemes from remote repository. Here I will demonstrate how you would go about doing this. 
+Discourse now supports importing color palettes from remote repository. Here I will demonstrate how you would go about doing this. 
 
-### Navigate to colors and add a color scheme.
+### Navigate to colors and add a color palette.
 
-Head to `/admin/customize/colors` on your site and create a color scheme.
+Head to `/admin/customize/colors` on your site and create a color palette.
 
 <img src="//assets-meta-cdck-prod-meta.s3.dualstack.us-west-1.amazonaws.com/original/3X/b/7/b7fced237ee399d52c634a3ab6fcc9416db65605.png" width="690" height="451">
 
@@ -18,13 +18,13 @@ Tips:
 
 - I used a chrome plugin ([color picker](https://chrome.google.com/webstore/detail/colorpick-eyedropper/ohcpnigalekghcmgcdcenkpelffpdolg?hl=en)) to select colors from an existing image of a palette on the web. 
 
-- If you create a theme, assign the color scheme to the theme and preview it, changes will be reflected live.
+- If you create a theme, assign the color palette to the theme and preview it, changes will be reflected live.
 
-### Create a new git repository with the color scheme
+### Create a new git repository with the color palette
 
 ```text
-mkdir my-awesome-scheme
-cd my-awesome-scheme
+mkdir my-awesome-palette
+cd my-awesome-palette
 git init .
 vim about.json
 ```
@@ -33,7 +33,7 @@ For `about.json` add a skeleton config file
 
 ```text
 {
-   "name" : "My awesome color schemes",
+   "name" : "My awesome color palettes",
    "about_url" : "",
    "license_url": "",
    "color_schemes": {
@@ -61,7 +61,7 @@ Create an account on [GitHub.com](https://github.com) and then create a new repo
 
 ### (Optional) create a topic on Discourse as a home to discuss your colors
 
-Ideally you would create a topic in the #plugin:theme category with some screenshots of your color scheme. You will use this as your `about_url`
+Ideally you would create a topic in the #plugin:theme category with some screenshots of your color palette. You will use this as your `about_url`
 
 ### Fill in the missing information in your about.json file
 
@@ -69,7 +69,7 @@ Ideally you would create a topic in the #plugin:theme category with some screens
 
 - Either use the GitHub project URL or Discourse topic URL as your `about_url` 
 
-- Press `Copy to Clipboard` on your color scheme and paste that in to the color_schemes section
+- Press `Copy to Clipboard` on your color palette and paste that in to the color_schemes section
 
 At the end of the process your about.json file will look something like:
 
@@ -102,18 +102,18 @@ git commit -am "added more details"
 git push
 ```
 
-### Test your color scheme is correct
+### Test your color palette is correct
 
-- Delete your local color scheme
+- Delete your local color palette
 - In the `admin/customize/theme` screen import your theme from GitHub
 
 <img src="//assets-meta-cdck-prod-meta.s3.dualstack.us-west-1.amazonaws.com/original/3X/4/2/421dbfd15c3f35c0d5a97ad1b6dc78dd1c094385.png" width="690" height="278">
 
-- Visit `admin/customize/colors` and ensure your color scheme looks correct. 
+- Visit `admin/customize/colors` and ensure your color palette looks correct. 
 
 :confetti_ball: 
 
-You can now easily share your color scheme with others! 
+You can now easily share your color palette with others! 
 
 See also: 
 
