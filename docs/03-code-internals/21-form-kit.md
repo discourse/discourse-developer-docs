@@ -378,11 +378,11 @@ Additionally, the following CSS variables are provided to customize these defaul
 
 ## @titleFormat
 
-Allows to override `@format` for the title. Look `@format` for details.
+Allows to override `@format` for the title. See `@format` for details.
 
 ## @descriptionFormat
 
-Allows to override `@format` for the description. Look `@format` for details.
+Allows to override `@format` for the description. See `@format` for details.
 
 ## Checkbox
 
