@@ -19,7 +19,7 @@ Discourse is a modern and highly-customizable platform for building communities.
 
 To work on Discourse Core, Themes or Plugins, you'll need a community to develop against.
 
-To develop Themes or Theme Components, you can use the discourse_theme CLI against our public 'Theme Creator', your own production site, or a [dedicated development environment](https://meta.discourse.org/t/336366). Once you have a development environment, check out the [Theme Beginners Guide](https://meta.discourse.org/t/beginners-guide-to-developing-discourse-themes/93648?silent=true).
+To develop Themes or Theme Components, you can use the discourse_theme CLI against our public 'Theme Creator', your own production site, or a [dedicated development environment](https://meta.discourse.org/t/336366). Once you have a development environment, check out the [Theme Beginners Guide](https://meta.discourse.org/t/beginners-guide-to-developing-discourse-themes/93648).
 
 To develop plugins or core, you'll need to set up a dedicated development environment. Once that's set up, check out the [Plugin Beginners Guide](https://meta.discourse.org/t/30515).
 
