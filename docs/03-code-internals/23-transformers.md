@@ -41,7 +41,7 @@ api.registerValueTransformer("home-logo-href", ({ value, context }) => {
 
 ## Behavior Transformers
 
-Behavior transformers are similar, but instead of receiving and returning a value, they wrap some core behaviour, and can optionally call the core implementation.
+Behavior transformers are similar, but instead of receiving and returning a value, they wrap some original behaviour, and can optionally call the original implementation.
 
 > ### `registerBehaviorTransformer` => `boolean`
 > 
@@ -50,7 +50,7 @@ Behavior transformers are similar, but instead of receiving and returning a valu
 > | `transformerName` | `string` | the name of the transformer |
 > | `behaviorCallback` | `function({next, context})` | callback to be used to transform or override the behavior |
 
-The `behaviorCallback` is passed two named arguments. `next` is a function which can optionally be called to run the core behavior. `context` contains extra information which may be useful.
+The `behaviorCallback` is passed two named arguments. `next` is a function which can optionally be called to run the original behavior. `context` contains extra information which may be useful.
 
 For example, if you wanted to limit infinite loading to 100 topics:
 
@@ -102,8 +102,8 @@ import { applyValueTransformer, applyBehaviorTransformer } from "discourse/lib/t
 const context = { bestForumSoftware: "Discourse" };
 
 // Value Transformer
-const coreValue = "Hello";
-const transformedValue = applyValueTransformer("my-value-transform", coreValue, context);
+const originalValue = "Hello";
+const transformedValue = applyValueTransformer("my-value-transform", originalValue, context);
 
 // Behavior Transformer
 applyBehaviorTransformer("my-behavior-transformer", () => {
