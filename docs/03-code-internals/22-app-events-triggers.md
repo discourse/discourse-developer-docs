@@ -7,13 +7,14 @@ id: app-events-triggers
 <div data-theme-toc="true"> </div>
 
 # AppEvents
+
 The AppEvent system in Discourse provides a pub/sub mechanism for handling UI updates and component interactions - and these events are triggered via calls of `AppEvent.trigger`.
 
 This topic consolidates a list of all such event triggers and their arguments, along with line-of-code references to the Discourse source code.
 
 ## How to figure out what happens on an event trigger
 
-AppEvent is based on the Ember's Evented class, and similarly, events are handled by [the `on` method](https://api.emberjs.com/ember/5.12/classes/Evented/methods/on?anchor=on). 
+AppEvent is based on the Ember's Evented class, and similarly, events are handled by [the `on` method](https://api.emberjs.com/ember/5.12/classes/Evented/methods/on?anchor=on).
 
 Once the specific AppEvent trigger is identified, you may search in the source code for the corresponding `.on` method with the event name as the first argument.
 
@@ -21,21 +22,22 @@ This method should have an event handler function passed in as the last argument
 
 Taking the `composer:open` event, we can search for `appEvents.on("composer:open"`. This could lead us to 1 or more places in the code where the event is handled. Each of these would execute a callback function whenever the event is triggered, for example:
 
+```js
+this.appEvents.on("composer:opened", this, this._findMessages);
 ```
-    this.appEvents.on("composer:opened", this, this._findMessages);
-```
-You would then refer to the definition of the callback function `this._findMessages` to understand what happens when the `composer:opened` event is triggered. This callback function can take in arguments passed in from the trigger of the event to be processed within the scope of the function.
 
+You would then refer to the definition of the callback function `this._findMessages` to understand what happens when the `composer:opened` event is triggered. This callback function can take in arguments passed in from the trigger of the event to be processed within the scope of the function.
 
 ## List of AppEvent Triggers
 
 ### ace
+
 #### ace:resize [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/admin/addon/components/admin-theme-editor.js#L109)
 
 No arguments passed to this event.
 
-
 ### bookmarks
+
 #### bookmarks:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/bookmark-list.js#L40)
 
 | Position | Argument                      | Type            | Always Present | Description |
@@ -107,8 +109,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### card
+
 #### card:close [:link:](https://github.com/discourse/discourse/blob/main/plugins/chat/assets/javascripts/discourse/components/chat/direct-message-button.gjs#L32)
 
 No arguments passed to this event.
@@ -125,8 +127,8 @@ No arguments passed to this event.
 | 2        | target   | variable | True           | -           |
 | 3        | event    | variable | True           | -           |
 
-
 ### chat
+
 #### chat:message_interaction [:link:](https://github.com/discourse/discourse/blob/main/plugins/chat/assets/javascripts/discourse/components/chat-message/blocks/index.gjs#L18)
 
 | Position | Argument            | Type     | Always Present | Description |
@@ -206,8 +208,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### composer
+
 #### composer:cancel-upload [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/composer.js#L644)
 
 No arguments passed to this event.
@@ -477,8 +479,8 @@ No arguments passed to this event.
 
 No arguments passed to this event.
 
-
 ### composer-messages
+
 #### composer-messages:close [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/composer.js#L903)
 
 No arguments passed to this event.
@@ -541,22 +543,22 @@ No arguments passed to this event.
 
 </details>
 
-
 ### count-updated
+
 #### count-updated:user.username_lower:key [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/routes/user.js#L102)
 
 | Position | Argument | Type     | Always Present | Description |
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | value    | variable | True           | -           |
 
-
 ### cta
+
 #### cta:shown [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/instance-initializers/signup-cta.js#L72)
 
 No arguments passed to this event.
 
-
 ### d-editor
+
 #### d-editor:preview-click-group-card [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/d-editor.js#L165)
 
 | Position | Argument     | Type     | Always Present | Description |
@@ -577,22 +579,22 @@ No arguments passed to this event.
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | button   | variable | True           | -           |
 
-
 ### destroyed-custom-html
+
 #### destroyed-custom-html:this.name [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/custom-html.js#L40)
 
 No arguments passed to this event.
 
-
 ### discourse
+
 #### discourse:focus-changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/document-title.js#L40)
 
 | Position | Argument         | Type     | Always Present | Description |
 | -------- | ---------------- | -------- | -------------- | ----------- |
 | 1        | session.hasFocus | property | True           | -           |
 
-
 ### discourse-reactions
+
 #### discourse-reactions:reaction-toggled [:link:](https://github.com/discourse/discourse/blob/main/plugins/discourse-reactions/assets/javascripts/discourse/models/discourse-reactions-custom-reaction.js#L15)
 
 | Position | Argument            | Type     | Always Present | Description |
@@ -601,42 +603,42 @@ No arguments passed to this event.
 | -        | objectArg1.post     | variable | True           | -           |
 | -        | objectArg1.reaction | property | True           | -           |
 
-
 ### do-not-disturb
+
 #### do-not-disturb:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/user.js#L1225)
 
 | Position | Argument                  | Type     | Always Present | Description |
 | -------- | ------------------------- | -------- | -------------- | ----------- |
 | 1        | this.do_not_disturb_until | property | True           | -           |
 
-
 ### dom
+
 #### dom:clean [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/instance-initializers/clean-dom-on-route-change.js#L32)
 
 No arguments passed to this event.
 
-
 ### draft
+
 #### draft:destroyed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/composer.js#L1622)
 
 | Position | Argument | Type     | Always Present | Description |
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | key      | variable | True           | -           |
 
-
 ### emoji-picker
+
 #### emoji-picker:close [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/composer.js#L898)
 
 No arguments passed to this event.
 
-
 ### full-page-search
+
 #### full-page-search:trigger-search [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/controllers/full-page-search.js#L563)
 
 No arguments passed to this event.
 
-
 ### group
+
 #### group:join [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/group-membership-button.js#L65)
 
 | Position | Argument | Type     | Always Present | Description |
@@ -649,8 +651,8 @@ No arguments passed to this event.
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | model    | variable | True           | -           |
 
-
 ### header
+
 #### header:hide-topic [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/routes/topic.js#L393)
 
 No arguments passed to this event.
@@ -747,14 +749,14 @@ No arguments passed to this event.
 
 </details>
 
-
 ### inserted-custom-html
+
 #### inserted-custom-html:this.name [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/custom-html.js#L33)
 
 No arguments passed to this event.
 
-
 ### keyboard
+
 #### keyboard:move-selection [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/keyboard-shortcuts.js#L790)
 
 | Position | Argument                   | Type     | Always Present | Description |
@@ -763,8 +765,8 @@ No arguments passed to this event.
 | -        | objectArg1.articles        | variable | True           | -           |
 | -        | objectArg1.selectedArticle | variable | True           | -           |
 
-
 ### lightbox
+
 #### LIGHTBOX_APP_EVENT_NAMES.CLOSE [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/services/lightbox.js#L142)
 
 No arguments passed to this event.
@@ -805,8 +807,8 @@ No arguments passed to this event.
 | -        | objectArg1.items       | variable | True           | -           |
 | -        | objectArg1.currentItem | variable | True           | -           |
 
-
 ### notifications
+
 #### notifications:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/instance-initializers/subscribe-user-notifications.js#L155)
 
 No arguments passed to this event.
@@ -823,8 +825,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### page
+
 #### page:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/page-tracker.js#L41)
 
 | Position | Argument                           | Type            | Always Present | Description |
@@ -854,8 +856,8 @@ No arguments passed to this event.
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | topic    | variable | True           | -           |
 
-
 ### poll
+
 #### poll:voted [:link:](https://github.com/discourse/discourse/blob/main/plugins/poll/assets/javascripts/discourse/components/poll.gjs#L190)
 
 | Position | Argument  | Type     | Always Present | Description |
@@ -884,8 +886,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### post
+
 #### post:created [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/composer.js#L1229)
 
 | Position | Argument    | Type     | Always Present | Description |
@@ -929,8 +931,8 @@ No arguments passed to this event.
 | 1        | copy.postNumber     | property | True           | -           |
 | 2        | copy.revisionNumber | property | True           | -           |
 
-
 ### post-stream
+
 #### post-stream:filter-replies [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/post-stream.js#L270)
 
 | Position | Argument               | Type            | Always Present | Description |
@@ -1116,8 +1118,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### quote-button
+
 #### quote-button:edit [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/keyboard-shortcuts.js#L353)
 
 No arguments passed to this event.
@@ -1126,20 +1128,20 @@ No arguments passed to this event.
 
 No arguments passed to this event.
 
-
 ### sidebar-hamburger-dropdown
+
 #### sidebar-hamburger-dropdown:rendered [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/sidebar/hamburger-dropdown.gjs#L26)
 
 No arguments passed to this event.
 
-
 ### site-header
+
 #### site-header:force-refresh [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/instance-initializers/narrow-desktop.js#L26)
 
 No arguments passed to this event.
 
-
 ### this.eventPrefix
+
 #### this.eventPrefix:insert-text [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/textarea-text-manipulation.js#L433)
 
 | Position | Argument | Type     | Always Present | Description |
@@ -1162,8 +1164,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### topic
+
 #### topic:created [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/composer.js#L1231)
 
 | Position | Argument    | Type     | Always Present | Description |
@@ -1227,8 +1229,8 @@ No arguments passed to this event.
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | data     | variable | True           | -           |
 
-
 ### topic-entrance
+
 #### topic-entrance:show [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/basic-topic-list.js#L106)
 
 | Position | Argument            | Type            | Always Present | Description |
@@ -1265,8 +1267,8 @@ No arguments passed to this event.
 
 </details>
 
-
 ### topic-header
+
 #### topic-header:trigger-this.args.type-card [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/header/topic/participant.gjs#L19)
 
 | Position | Argument           | Type     | Always Present | Description |
@@ -1275,8 +1277,8 @@ No arguments passed to this event.
 | 2        | e1.target          | property | True           | -           |
 | 3        | e1                 | variable | True           | -           |
 
-
 ### upload-mixin
+
 #### upload-mixin:this.config.id:all-uploads-complete [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/uppy/uppy-upload.js#L572)
 
 No arguments passed to this event.
@@ -1322,8 +1324,8 @@ No arguments passed to this event.
 
 No arguments passed to this event.
 
-
 ### user-card
+
 #### user-card:after-show [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/components/card-contents-base.js#L93)
 
 | Position | Argument        | Type     | Always Present | Description |
@@ -1338,14 +1340,14 @@ No arguments passed to this event.
 | 1        | objectArg1          | object   | True           | -           |
 | -        | objectArg1.username | variable | True           | -           |
 
-
 ### user-drafts
+
 #### user-drafts:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/user.js#L1231)
 
 No arguments passed to this event.
 
-
 ### user-menu
+
 #### user-menu:notification-click [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/user-menu/notification-item.js#L85)
 
 | Position | Argument                | Type     | Always Present | Description |
@@ -1364,24 +1366,24 @@ No arguments passed to this event.
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | tab.id   | property | True           | -           |
 
-
 ### user-reviewable-count
+
 #### user-reviewable-count:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/models/user.js#L1236)
 
 | Position | Argument | Type     | Always Present | Description |
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | count    | variable | True           | -           |
 
-
 ### user-status
+
 #### user-status:changed [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/instance-initializers/subscribe-user-notifications.js#L227)
 
 | Position | Argument | Type     | Always Present | Description |
 | -------- | -------- | -------- | -------------- | ----------- |
 | 1        | data     | variable | True           | -           |
 
-
 ### other events
+
 #### click-tracked [:link:](https://github.com/discourse/discourse/blob/main/app/assets/javascripts/discourse/app/lib/click-track.js#L98)
 
 | Position | Argument | Type     | Always Present | Description |
