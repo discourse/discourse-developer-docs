@@ -376,6 +376,14 @@ Additionally, the following CSS variables are provided to customize these defaul
 - medium: `--form-kit-medium-input`
 - large: `--form-kit-large-input`
 
+**Example**
+
+```hbs
+<form.Field @name="bar" @title="Bar" @format="small" as |field|>
+  <field.Input />
+</form.Field>
+```
+
 ## @titleFormat
 
 Allows to override `@format` for the title. Look `@format` for details.
