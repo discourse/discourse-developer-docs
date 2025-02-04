@@ -63,7 +63,7 @@ export default apiInitializer("1.34", (api) => {
 
 ## Introducing content via Plugin Outlets
 
-For the mobile view, and to add content inside existing cells of the desktop view, you can use Plugin Outlets. These can be identified and used in the same way as any other part of Discourse. Check out [the Plugin Outlet documentation](https://meta.discourse.org/t/using-plugin-outlet-connectors-from-a-theme-or-plugin/32727).
+Plugin outlets can be used to inject content into existing cells on desktop, or to inject content into the mobile view. These can be identified and used in the same way as any other part of Discourse. Check out [the Plugin Outlet documentation](https://meta.discourse.org/t/using-plugin-outlet-connectors-from-a-theme-or-plugin/32727).
 
 ## Replacing the entire topic-list-item
 
