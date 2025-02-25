@@ -451,6 +451,20 @@ Displays the time input or not. Defaults to true.
 </Form>
 ```
 
+### @expandedDatePickerOnDesktop
+
+Displays date picker expanded on desktop. Defaults to true.
+
+**Example**
+
+```hbs
+<Form as |form|>
+  <form.Field @name="start" @title="Start" as |field|>
+    <field.Calendar @expandedDatePickerOnDesktop={{false}} />
+  </form.Field>
+</Form>
+```
+
 ## Composer
 
 Renders a `<DEditor />` component.
