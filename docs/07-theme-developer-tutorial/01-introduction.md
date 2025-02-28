@@ -84,7 +84,7 @@ Now hit the save button, then click "Preview". You should see something like:
 
 Congratulations! You just created your first Discourse theme! :tada:
 
-#### Rendering into an Outlet
+### Rendering into an Outlet
 
 "Plugin Outlets" are one of the main ways to customize Discourse. These allow you to add content in thousands of places throughout the user interface. We'll explore these in more detail later, but for now let's render some dynamic content into the '`discovery-list-container-top`' outlet.
 
