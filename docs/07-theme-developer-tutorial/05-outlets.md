@@ -1,3 +1,10 @@
+---
+title: "Theme Developer Tutorial: 5. Using Outlets to insert and replace content"
+short_title: "5 - Outlets"
+id: theme-developer-tutorial-outlets
+---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
 
 #### Handlebars templates
 

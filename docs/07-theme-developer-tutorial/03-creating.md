@@ -1,8 +1,10 @@
 ---
-title: Theme Developer Tutorial: 3. Creating your first theme
-short_title: "3: Creating Themes"
+title: "Theme Developer Tutorial: 3. Creating your first theme"
+short_title: "3 - Creating Theme"
 id: theme-developer-tutorial-creating
 ---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
 
 #### Hello World (HTML / CSS)
 

@@ -1,3 +1,11 @@
+---
+title: "Theme Developer Tutorial: 5. Wrapping up"
+short_title: "7 - Conclusion"
+id: theme-developer-tutorial-conclusion
+---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
+
 #### Theme settings
 
 I won't be covering theme settings in the guide since we already have a very good guide detailing how to use them in your themes.

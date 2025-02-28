@@ -1,8 +1,10 @@
 ---
-title: Theme Developer Tutorial: 4. CSS in Themes
-short_title: "4: CSS"
+title: "Theme Developer Tutorial: 4. CSS in Themes"
+short_title: "4 - CSS"
 id: theme-developer-tutorial-css
 ---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
 
 Discourse uses [SCSS](https://sass-lang.com/) to simplify styling and increase maintainability. I won't get into the details of why it is like that. I'll just leave it at recommending that you use SCSS instead of CSS when possible in your themes. It scales a lot better and your future self will thank you!
 

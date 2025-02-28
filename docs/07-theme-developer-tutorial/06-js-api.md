@@ -1,3 +1,11 @@
+---
+title: "Theme Developer Tutorial: 5. Using the JS API"
+short_title: "6 - JS API"
+id: theme-developer-tutorial-js-api
+---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
+
 #### The pluginAPI
 
 In a nutshell, the PluginAPI is an easy way for you to write JS / jQuery and make Discourse do <s>things</s> amazing things!

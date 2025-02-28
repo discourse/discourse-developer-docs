@@ -1,8 +1,10 @@
 ---
-title: Theme Developer Tutorial: 2. Overview of a Theme
-short_title: "2: Overview"
+title: "Theme Developer Tutorial: 2. Overview of a Theme"
+short_title: "2 - Overview"
 id: theme-developer-tutorial-overview
 ---
+
+> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
 
 #### What are themes anyway?
 

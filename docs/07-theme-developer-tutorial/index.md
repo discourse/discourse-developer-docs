@@ -1,3 +1,3 @@
 ---
-title: "Tutorial: Theme Developer"
+title: "Theme Dev Tutorial"
 ---
