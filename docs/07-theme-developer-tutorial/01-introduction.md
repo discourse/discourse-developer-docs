@@ -3,7 +3,7 @@ title: "Theme Developer Tutorial: 1. Introduction"
 short_title: "1 - Introduction"
 id: theme-developer-tutorial-intro
 ---
-This tutorial will teach you how to create a Discourse Theme or Theme Component from the ground up. While this topic assumes no previous experience working on Discourse themes, it does assume some prior experience using [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML), [CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS) and [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript). It'll also help if you [know your way around Github](https://guides.github.com/activities/hello-world/).
+This tutorial will teach you how to create a Discourse Theme or Theme Component from the ground up. While this topic assumes no previous experience working on Discourse themes, it does assume some prior experience using [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML), [CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS) and [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript). It'll also help if you [know your way around GitHub](https://guides.github.com/activities/hello-world/).
 
 ## What are Discourse themes?
 
@@ -34,7 +34,7 @@ Let's kick things off by creating a new local theme! If you have your own Discou
 
 If you don't have your own community, then you can log into the public ["Theme Creator"](https://meta.discourse.org/t/get-started-with-theme-creator-and-the-theme-cli/108444) community, visit your profile page, and then choose the "Themes" tab.
 
-From there, click the "Install" button, and then choose "Create New" in the popup. Enter a name for your theme, then hit "Create". Once you see your new theme, use the "Edit CSS/HTML" button to enter the code editor.
+From there, click the "Install" button, and then choose "Create New" in the popup. Enter a name for your theme, then hit "Create". Once you see your new theme, use the "Edit Code" button.
 
 ### Editing Code
 
@@ -86,9 +86,9 @@ Congratulations! You just created your first Discourse theme! :tada:
 
 ### Rendering into an Outlet
 
-"Plugin Outlets" are one of the main ways to customize Discourse. These allow you to add content in thousands of places throughout the user interface. We'll explore these in more detail later, but for now let's render some dynamic content into the '`discovery-list-container-top`' outlet.
+"Plugin Outlets" are one of the main ways to customize Discourse. These allow you to add content in thousands of places throughout the user interface. We'll explore these in more detail later, but for now let's render some dynamic content into the `discovery-list-container-top` outlet.
 
-To do this, visit the JS tab of your theme. The code in this tab is a Discourse "api initializer", and a boilerplate implementation should be filled in for you. To render some content into an outlet, we can use `api.renderInOutlet`, and Ember's `<template>` syntax.
+To do this, visit the JS tab of your theme. The code in this tab is a Discourse "API Initializer", and a boilerplate implementation should be filled in for you. To render some content into an outlet, we can use `api.renderInOutlet`, and Ember's `<template>` syntax.
 
 Inside the `apiInitializer`, replace `// your code here` with this:
 
@@ -120,7 +120,7 @@ Then jump back to the CSS tab, and add this new rule:
 }
 ```
 
-Now save and refresh the preview. You should see a new dynamic welcome banner just above the topic list! Existing users will be welcomed by their username, and we have a friendly message for brand new visitors. Nicely done!
+Now save and refresh the preview. You should see a new dynamic welcome banner just above the topic list! Existing users will be welcomed by their username, and new visitors will see a generic message. Nicely done!
 
 There's a lot going on this example: the JS API, Plugin Outlets, Ember's `<template>` tag, and the handlebars template syntax inside that. Don't worry, we'll continue to explore these concepts in more detail throughout the rest of the tutorial.
 
