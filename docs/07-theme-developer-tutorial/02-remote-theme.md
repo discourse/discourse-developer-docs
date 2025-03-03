@@ -102,7 +102,7 @@ git commit -m "My first commit"
 
 Or if you prefer, perform the commit from your favorite Git user interface.
 
-Then set up the remote repository by visiting https://github.com/new. Enter a name & description for your repository. Leave the template selection empty, and skip the README, gitignore and license options. Create the repository.
+Then set up the remote repository by visiting [github.com/new](https://github.com/new). Enter a name & description for your repository. Leave the template selection empty, and skip the README, gitignore and license options. Create the repository.
 
 Then follow GitHub's instructions to "push an existing repository from the command line". Once complete, you should see all your theme files in the GitHub UI. The repository URL can now be used to install the theme on any Discourse forum, and any updates you push to GitHub will be made available to forum admins.
 
