@@ -93,7 +93,14 @@ For now, take a look at the `about.json` file. This contains the most important 
 
 So far you've created a local directory and synced it up to a single forum via `discourse_theme`. To version-control your theme and make it available for others to install via the Discourse UI, you'll need to push the directory to an internet-accessible Git repository. We'll be using GitHub for this tutorial, but any git-hosting platform should work.
 
-First, let's prepare the local directory. Navigate to the theme in your terminal, then run `git add .`, then `git commit -m "My first commit"`. Or if you prefer, perform the commit from your favorite Git user interface.
+First, let's prepare the local directory. Navigate to the theme in your terminal, then run
+
+```bash
+git add .
+git commit -m "My first commit"
+```
+
+Or if you prefer, perform the commit from your favorite Git user interface.
 
 Then set up the remote repository by visiting https://github.com/new. Enter a name & description for your repository. Leave the template selection empty, and skip the README, gitignore and license options. Create the repository.
 
