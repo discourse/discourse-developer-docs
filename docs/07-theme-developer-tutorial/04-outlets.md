@@ -95,11 +95,13 @@ class WelcomeBanner extends Component {
   @service currentUser;
 
   <template>
-    {{#if this.currentUser}}
-      Welcome back @{{this.currentUser.username}}.
-    {{else}}
-	  Welcome to our community.
-    {{/if}}
+    <div class="welcome-banner">
+      {{#if this.currentUser}}
+        Welcome back @{{this.currentUser.username}}.
+      {{else}}
+	    Welcome to our community.
+      {{/if}}
+    </div>
   </template>
 }
 ```
@@ -116,11 +118,13 @@ export default class WelcomeBanner extends Component {
   @service currentUser;
 
   <template>
-    {{#if this.currentUser}}
-      Welcome back @{{this.currentUser.username}}.
-    {{else}}
-	  Welcome to our community.
-    {{/if}}
+    <div class="welcome-banner">
+      {{#if this.currentUser}}
+        Welcome back @{{this.currentUser.username}}.
+      {{else}}
+	    Welcome to our community.
+      {{/if}}
+    </div>
   </template>
 }
 ```
