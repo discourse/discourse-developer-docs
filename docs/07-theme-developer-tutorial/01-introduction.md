@@ -54,7 +54,7 @@ The "show advanced" toggle can be used to show a few more tabs. Some of those ar
 Let's start with a basic local theme. We're going to add a big "Hello World!" banner under the Discourse header. In the "After Header" tab, paste this HTML code:
 
 ```html
-<div class="hello-world-banner">
+<div class="welcome-banner">
   <h1 class="hello-world">Hello World!</h1>
 </div>
 ```

@@ -61,19 +61,11 @@ export default apiInitializer("1.8.0", (api) => {
 Now open up `common/common.scss`, and paste in:
 
 ```css
-.hello-world-banner {
-  height: 300px;
-  width: 100%;
-  background: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1em;
-}
-
-.hello-world {
-  font-size: 8em;
+.welcome-banner {
+  background: green;
   color: white;
+  text-align: center;
+  padding: 10px;
 }
 ```
 
