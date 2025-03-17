@@ -29,6 +29,7 @@ Discourse is a fast-moving project, and as such any custom theme will [require m
 - [Theme CLI](https://meta.discourse.org/t/install-the-discourse-theme-cli-console-app-to-help-you-build-themes/82950)
 - [Theme Creator](https://meta.discourse.org/t/get-started-with-theme-creator-and-the-theme-cli/108444)
 - [File structure of theme](https://meta.discourse.org/t/structure-of-themes-and-theme-components/60848)
+
 ## Frontend Customization
 
 - [Color Schemes](https://meta.discourse.org/t/61196)
@@ -36,6 +37,7 @@ Discourse is a fast-moving project, and as such any custom theme will [require m
 - [Outlets](https://meta.discourse.org/t/32727)
 - [Transformers](https://meta.discourse.org/t/349954)
 - [modifyClass](https://meta.discourse.org/t/262064)
+
 ## More!
 
 Check out the rest of the [Developer Guides](https://meta.discourse.org/c/documentation/developer-guides/56) !
