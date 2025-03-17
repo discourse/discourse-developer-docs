@@ -16,7 +16,7 @@ In general, themes are not supposed to be compatible with each other because the
 
 ### Theme Components
 
-Theme components are geared towards customising one aspect of Discourse. Because of their narrowed focus, theme components are almost always compatible with each other. This means that you can have multiple theme components running at the same time under any theme. You can think of theme components like apps on your phone.
+Theme components are geared towards customising one aspect of Discourse. Because of their narrowed focus, theme components are almost always compatible with each other. This means that you can have multiple theme components running at the same time under any theme.
 
 ### Technical Differences
 
