@@ -1,59 +1,32 @@
 ---
-title: "Theme Developer Tutorial: 5. Wrapping up"
-short_title: "7 - Conclusion"
+title: "Theme Developer Tutorial: 7. Wrapping up"
+short_title: 7 - Conclusion
 id: theme-developer-tutorial-conclusion
 ---
+This tutorial has been a whistle-stop tour through the process of creating a Discourse theme and experimenting with a few of the most common APIs. Of course, there's plenty more to learn, so let's map out some more places for you to explore.
 
-> :warning: OUT OF DATE - REWRITE REQUIRED BEFORE MERGE
+## Existing themes & theme component
 
-#### Theme settings
+One of the best resources when learning about theme development is to read through the code of existing themes. Check out the directories in #theme and #theme-component, or jump straight to our [all-the-themes](http://github.com/discourse/all-the-themes) meta-repository for even more example code!
 
-I won't be covering theme settings in the guide since we already have a very good guide detailing how to use them in your themes.
+## Sharing your themes
 
-https://meta.discourse.org/t/how-to-add-settings-to-your-discourse-theme/82557
+Once you have a theme or theme component you're happy with, and it's published on GitHub, it's time to share it! Make a new topic in #theme or #theme-component and we'll review/publish it.
+## How to ask for help
 
-#### Theme translations
+If you're stuck on something that relates to themes, feel free to create a post in the #dev category. Be sure to include as much information as you can and anything you've tried. The more effort you put into your question, the more likely you'll get an answer. If you can include code snippets, or link out to a repository on GitHub, that would be great!
 
-The theme translations system makes sure your theme is ready for a global audience. You can supply text in multiple languages, and Discourse will automatically substitute it in the right place, depending on the users' selected language. For more information, see
+## Other resources
 
-https://meta.discourse.org/t/adding-localizable-strings-to-themes-and-theme-components/109867
+- https://meta.discourse.org/t/designers-guide-to-getting-started-with-themes-in-discourse/152002
 
-### Best practices
+- https://meta.discourse.org/t/how-to-add-settings-to-your-discourse-theme/82557
 
-Now that you are familiar with Discourse theme basics, let's move on to a few recommendations that will make your life as a Discourse theme developer a lot easier.
+- https://meta.discourse.org/t/adding-localizable-strings-to-themes-and-theme-components/109867
 
-##### Use Prettier
+- https://meta.discourse.org/t/automatically-lint-and-format-code-before-commits/132947?silent=true
 
-Prettier is a code formatting tool. The files on the Discourse repository are Prettified for consistent code formatting. It makes your code easier to read and...wait for it....pretty!
+- https://meta.discourse.org/t/write-end-to-end-system-specs-for-the-discourse-user-interface/325937
 
-You can read more about Prettier here:
+- https://meta.discourse.org/t/minimizing-maintenance-on-theme-customizations/261388
 
-https://meta.discourse.org/t/prettier-code-formatting-tool/93212
-
-##### How to ask for help
-
-If you're stuck on something that relates to themes, feel free to create a post in the #dev category. Be sure to include as much information as you can and anything you've tried. The more effort you put into your question, the more likely you'll get an answer.
-
-You'll get extra attention if you make it clear that the help you need is for a theme you intend to release here on Meta.
-
-##### Include a license
-
-Including a license with your theme makes it clear that it's intended to be shared. I recommend the MIT license or equivalent for open source themes.
-
-##### Creating a topic for your theme on Meta
-
-If you'd like to share your theme here on Meta, please consider including the following if applicable
-
-1. Short description at the top
-2. Screenshots
-3. Preview on theme creator
-4. Instructions for theme settings
-5. Link to theme installation guide
-
-<hr>
-
-While we covered a lot of subjects, this guide barely scratches the surface and there's obviously things I may have missed.
-
-If you have any questions, please don't hesitate to ask.
-
-This guide is a wiki, if you have any improvements, please go ahead and make them by editing the topic.

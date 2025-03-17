@@ -1,6 +1,6 @@
 ---
 title: "Theme Developer Tutorial: 5. Building and using components"
-short_title: 4 - Components
+short_title: 5 - Components
 id: theme-developer-tutorial-components
 ---
 
