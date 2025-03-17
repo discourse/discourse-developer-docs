@@ -18,9 +18,9 @@ But for more complex situations, you can put additional scss in files like `/sty
 
 ## Using variables
 
-Discourse makes extensive use of [CSS variables](https://www.w3schools.com/css/css3_variables.asp) for colors, font sizes, and other things which need to be shared throughout the stylesheets. You can find a full list of the colour variables [here](https://github.com/discourse/discourse/blob/main/app/assets/stylesheets/color_definitions.scss), font variables [here](https://github.com/discourse/discourse/blob/main/app/assets/stylesheets/common/font-variables.scss). Or alternatively, open your browser dev tools, select the `<html>` element, and scroll through all the available variables.
+Discourse makes extensive use of [CSS variables](https://www.w3schools.com/css/css3_variables.asp) for colors, font sizes, and other things which need to be shared throughout the stylesheets. You can find a full list of the color variables [here](https://github.com/discourse/discourse/blob/main/app/assets/stylesheets/color_definitions.scss), font variables [here](https://github.com/discourse/discourse/blob/main/app/assets/stylesheets/common/font-variables.scss). Or alternatively, open your browser dev tools, select the `<html>` element, and scroll through all the available variables.
 
-Let's make use of this knowledge by updating our theme to use the theme colours for the banner! Open up the `common.scss` file, and update the color properties to use variables:
+Let's make use of this knowledge by updating our theme to use the theme colors for the banner! Open up the `common.scss` file, and update the color properties to use variables:
 
 ```css
 .welcome-banner {
@@ -33,7 +33,7 @@ Let's make use of this knowledge by updating our theme to use the theme colours 
 
 `discourse_theme` will sync this change up to your site instantly, and the change should appear in your browser.
 
-Great! Now your banner's colours will match the site colour scheme, and automatically adjust based on light/dark modes.
+Great! Now your banner's colors will match the site color scheme, and automatically adjust based on light/dark modes.
 
 For more information about the variables available, check out [this document](https://meta.discourse.org/t/77551)
 
