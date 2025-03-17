@@ -3,6 +3,7 @@ title: "Theme Developer Tutorial: 4. Using Outlets to insert and replace content
 short_title: 4 - Outlets
 id: theme-developer-tutorial-outlets
 ---
+
 Discourse uses the [Ember JS Framework](https://emberjs.com/) for its user-facing interface. On top of Ember, Discourse provides a number of APIs to allow themes to customize the user interface. The most commonly-used API is Plugin Outlets.
 
 These outlets are positioned throughout Discourse core, and allow themes to render Ember Components inside them. Those components are given access to some contextual information called "outlet args".
@@ -32,7 +33,7 @@ The first argument is a string representing the name of the outlet you want to t
 The simplest component is a "template only component", and can be authored like this:
 
 ```gjs
-const MyComponent = <template>Hello World</template>
+const MyComponent = <template>Hello World</template>;
 api.renderInOutlet("some-outlet", MyComponent);
 
 // Or on one line
@@ -46,15 +47,18 @@ To access javascript variables from inside the template, you can wrap your varia
 ```gjs
 const currentUser = api.getCurrentUser();
 
-api.renderInOutlet("discovery-list-container-top", <template>
-  <div class="welcome-banner">
-    {{#if currentUser}}
-      Welcome back @{{currentUser.username}}
-    {{else}}
-	  Welcome to our community
-    {{/if}}
-  </div>
-</template>);
+api.renderInOutlet(
+  "discovery-list-container-top",
+  <template>
+    <div class="welcome-banner">
+      {{#if currentUser}}
+        Welcome back @{{currentUser.username}}
+      {{else}}
+        Welcome to our community
+      {{/if}}
+    </div>
+  </template>
+);
 ```
 
 To access contextual arguments passed to Ember Components, you can use the syntax `{{@someArgument}}`. In the case of outlets, all the contextual "outlet arguments" are made available via the `@outletArgs` object.
@@ -99,7 +103,7 @@ class WelcomeBanner extends Component {
       {{#if this.currentUser}}
         Welcome back @{{this.currentUser.username}}.
       {{else}}
-	    Welcome to our community.
+        Welcome to our community.
       {{/if}}
     </div>
   </template>
@@ -122,7 +126,7 @@ export default class WelcomeBanner extends Component {
       {{#if this.currentUser}}
         Welcome back @{{this.currentUser.username}}.
       {{else}}
-	    Welcome to our community.
+        Welcome to our community.
       {{/if}}
     </div>
   </template>

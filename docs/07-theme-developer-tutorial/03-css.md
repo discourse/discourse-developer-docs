@@ -3,6 +3,7 @@ title: "Theme Developer Tutorial: 3. CSS in Themes"
 short_title: 3 - CSS
 id: theme-developer-tutorial-css
 ---
+
 Technically, Discourse uses [SCSS](https://sass-lang.com/) to author its stylesheets. However, we're increasingly moving towards native CSS features as they mature, so the vast majority of themes won't need to use SCSS features or syntaxes.
 
 This chapter will focus on Discourse-specific subjects, so if you don't already have a passing familiarity with CSS, take some time to learn about it from
@@ -42,6 +43,6 @@ The number of elements and classes in Discourse can feel quite overwhelming from
 
 For example, let's assume you want to style all the buttons in Discourse. One approach would be to use DevTools and try to find every variation of every button and style it. But a better approach would be to see how core is styling buttons, and base your approach on that.
 
-To explore re-styling Discourse in more detail, check out [the Designer's guide to Discourse themes](https://meta.discourse.org/t/152002) 
+To explore re-styling Discourse in more detail, check out [the Designer's guide to Discourse themes](https://meta.discourse.org/t/152002)
 
 Or if you're ready to explore more ways to add/change content in Discourse, let's go to the [next chapter]

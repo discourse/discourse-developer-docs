@@ -87,7 +87,6 @@ Lots going on here! Let's break it down:
 2. We imported the `@tracked` decorator and applied it to the `counter` field. This allows Ember's autotracking system to automatically re-render relevant parts of the DOM when the field value is changed
 
 3. We created a new function in the component which will increment the counter when called
-   
 4. We imported the `@action` decorator and applied it to the `incrementCounter()` function. This makes the function usable from a template context. [^1]
 
 5. We imported the `DButton` component, and added it to the template in a similar way to a regular HTML element. We passed three arguments to it: `@icon`, `@translatedLabel` and `@action`.

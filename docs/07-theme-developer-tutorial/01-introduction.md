@@ -3,11 +3,13 @@ title: "Theme Developer Tutorial: 1. Introduction"
 short_title: "1 - Introduction"
 id: theme-developer-tutorial-intro
 ---
+
 This tutorial will teach you how to create a Discourse Theme or Theme Component from the ground up. While this topic assumes no previous experience working on Discourse themes, it does assume some prior experience using [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML), [CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS) and [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript). It'll also help if you [know your way around GitHub](https://guides.github.com/activities/hello-world/).
 
 ## What are Discourse themes?
 
 > A theme or theme component is a set of files packaged together designed to either modify Discourse visually or to add new features.
+
 ### Themes
 
 In general, themes are not supposed to be compatible with each other because they are essentially different standalone designs. You can have multiple themes installed, but you can't use two of them at the same time.
@@ -98,13 +100,13 @@ const currentUser = api.getCurrentUser();
 api.renderInOutlet(
   "discovery-list-container-top",
   <template>
-	<div class="welcome-banner">
-	{{#if currentUser}}
-	  Welcome back @{{currentUser.username}}
-	{{else}}
-	  Welcome to our community
-	{{/if}}
-	</div>
+    <div class="welcome-banner">
+      {{#if currentUser}}
+        Welcome back @{{currentUser.username}}
+      {{else}}
+        Welcome to our community
+      {{/if}}
+    </div>
   </template>
 );
 ```

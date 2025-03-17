@@ -3,6 +3,7 @@ title: "Theme Developer Tutorial: 6. Using the JS API"
 short_title: 6 - JS API
 id: theme-developer-tutorial-js-api
 ---
+
 In the last couple of chapters, we've explored how to use the JavaScript API to render content into outlets. `renderInOutlet` is the most commonly-used API, but there are a ton more! In this chapter we'll try out a few of them, and show you how to discover more.
 
 ## Common API methods
@@ -48,6 +49,7 @@ export default apiInitializer((api) => {
   );
 });
 ```
+
 ### replaceIcon()
 
 ```js
