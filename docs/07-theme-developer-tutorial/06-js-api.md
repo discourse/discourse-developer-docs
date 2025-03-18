@@ -22,9 +22,7 @@ export default apiInitializer((api) => {
 
 ### headerIcons
 
-`api.headerIcons` will allow you to add, remove and re-arrange icons in the header. This is one of our ["DAG"](https://en.wikipedia.org/wiki/Directed_acyclic_graph) APIs, which allows you to control the ordering of things via "before" and "after" parameters.
-
-For example, to add a new icon before the search icon, you'd do something like
+`api.headerIcons` will allow you to add, remove and re-arrange icons in the header. For example, to add a new icon before the search icon, you'd do something like
 
 ```gjs
 import DButton from "discourse/components/d-button";
