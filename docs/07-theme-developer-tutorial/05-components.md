@@ -14,7 +14,7 @@ Taking our existing `CustomWelcomeBanner` component, we can learn more about the
 
 Let's display a list of the groups in the welcome banner. While it's technically possible to do that entirely in handlebars, it'll be much easier to do it in JavaScript. So, let's create a JS getter which returns a comma-separated list of the group names, and also skips the automatic 'trust level' groups. Then, we can reference that getter from the template, just like any other property:
 
-```
+```gjs
 // (existing imports omitted)
 
 export default class CustomWelcomeBanner extends Component {
@@ -46,13 +46,13 @@ Themes can import and use any components from Discourse core. The majority of th
 
 The most-used component is `DButton`. As the name suggests, that can be used to render an HTML `<button>`, but with a little extra Discourse flair. To import it, add this to the top of your `custom-welcome-banner.gjs` file:
 
-```
+```gjs
 import DButton from "discourse/components/d-button";
 ```
 
 Let's swap out our welcome message with something a little more interactive, so we can try out the button:
 
-```
+```gjs
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";

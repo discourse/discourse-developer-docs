@@ -26,7 +26,7 @@ export default apiInitializer((api) => {
 
 For example, to add a new icon before the search icon, you'd do something like
 
-```
+```gjs
 import DButton from "discourse/components/d-button";
 import { apiInitializer } from "discourse/lib/api";
 
@@ -97,7 +97,7 @@ export default apiInitializer((api) => {
 
 `api.registerValueTransformer` allows you to inject logic into predefined parts of the Discourse JavaScript application. For example, you can add a `"home-logo-href"` transformer to link the logo to `example.com`:
 
-```
+```gjs
 api.registerValueTransformer("home-logo-href", () => "https://example.com")
 ```
 
