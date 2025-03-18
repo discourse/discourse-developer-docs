@@ -60,7 +60,7 @@ With this method, you can easily replace any Discourse icon with another. For ex
 
 ### decorateCookedElement()
 
-`api.decorateCookedElement()` allows you to customize the rendered content of Discourse posts. This can be used for anything from simple formatting changes, all the way up to advanced integrated UIs like the builtin 'poll' plugin.
+`api.decorateCookedElement()` allows you to customize the rendered content of Discourse posts. This can be used for anything from simple formatting changes, all the way up to advanced integrated UIs like the built-in 'poll' plugin.
 
 The API should be passed a callback function which will be run for every post when it's rendered to the screen. The first argument to the callback will be the post's root HTML element, and the second will be a helper.
 
@@ -78,13 +78,13 @@ Or for a more advanced UI, you can render a glimmer component into a post. For e
 
 ```js
 import { apiInitializer } from "discourse/lib/api";
-import WelcomeBanner from "../components/welcome-banner";
+import CustomWelcomeBanner from "../components/custom-welcome-banner";
 
 export default apiInitializer((api) => {
   api.decorateCookedElement((element, helper) => {
     const counterWrapper = helper.renderGlimmer(
       "div.my-counter",
-      WelcomeBanner
+      CustomWelcomeBanner
     );
     element.appendChild(counterWrapper);
   });

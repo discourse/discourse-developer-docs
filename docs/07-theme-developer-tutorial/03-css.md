@@ -23,7 +23,7 @@ Discourse makes extensive use of [CSS variables](https://www.w3schools.com/css/c
 Let's make use of this knowledge by updating our theme to use the theme colors for the banner! Open up the `common.scss` file, and update the color properties to use variables:
 
 ```css
-.welcome-banner {
+.custom-welcome-banner {
   background: var(--quaternary);
   color: var(--secondary);
   text-align: center;
@@ -39,7 +39,7 @@ For more information about the variables available, check out [this document](ht
 
 ## Finding CSS selectors to style
 
-The number of elements and classes in Discourse can feel quite overwhelming from a re-styling stand point. The key to having a maintainable theme is to keep your changes as small as possible, and match the selectors used in Discourse core's stylesheets.
+The number of elements and classes in Discourse can feel quite overwhelming from a re-styling standpoint. The key to having a maintainable theme is to keep your changes as small as possible, and match the selectors used in Discourse core's stylesheets.
 
 For example, let's assume you want to style all the buttons in Discourse. One approach would be to use DevTools and try to find every variation of every button and style it. But a better approach would be to see how core is styling buttons, and base your approach on that.
 

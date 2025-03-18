@@ -4,11 +4,11 @@ short_title: 2 - Remote Theme
 id: theme-developer-tutorial-remote
 ---
 
-In the last chapter, we created a basic theme via the Discourse admin user interface. This works ok for very simple themes. But as soon as you want to do something more complex, or share a theme more widely, you'll need to create a Remote Theme.
+In the last chapter, we created a basic theme via the Discourse admin interface. This works well enough for very simple themes. But as soon as you want to do something more complex, or share a theme more widely, you'll need to create a Remote Theme.
 
 ## Install the discourse_theme CLI
 
-The first step towards developing a remote theme is to install the discourse_theme CLI on your computer. This tool is used to generate the initial scaffold for a theme, and can then synchronize it in real-time to a local Discourse instance, a 'production' Discourse community, or the public Theme Creator.
+The first step towards developing a remote theme is to install the `discourse_theme` CLI on your computer. This tool is used to generate the initial scaffold for a theme, and can then synchronize it in real-time to a local Discourse instance, a "production" Discourse community, or the public Theme Creator.
 
 Follow [these instructions](https://meta.discourse.org/t/82950) to install `discourse_theme`, then come back here to continue the tutorial.
 
@@ -16,17 +16,17 @@ Follow [these instructions](https://meta.discourse.org/t/82950) to install `disc
 
 In your local terminal, navigate to a directory where you want to store your new theme. Run `discourse_theme new my-first-theme`, then follow the prompts to fill in the theme's metadata.
 
-When setup is done, you'll see `✅ Done!`, and you'll be prompted to start 'watching' the theme. Answer yes, and then work through the watching setup.
+When setup is done, you'll see `✅ Done!`, and you'll be prompted to start "watching" the theme. Answer yes, and then work through the watching setup.
 
 For the root URL, enter the base URL of the Discourse site you'd like to sync the theme to. For a local development environment, use something like `http://localhost:4200`. For a production site, use something like `https://meta.discourse.org`. Or for Theme Creator, use `https://discourse.theme-creator.io`.
 
-Now you'll need to generate an API key. For a local development environment or production forum, visit the "API Keys" section of the admin panel, choose "Add API key", and create one associated with your user account, and a "Global" scope. Then paste it into the discourse_theme CLI.
+Now you'll need to generate an API key. For a local development environment or production forum, visit the "API Keys" section of the admin panel, choose "Add API key", and create one associated with your user account, and a "Global" scope. Then paste it into the `discourse_theme` CLI.
 
-If you're using theme creator, visit the themes section of your user profile, click the "API Key" button in the bottom left, generate, then paste into the discourse_theme CLI.
+If you're using theme creator, visit the themes section of your user profile, click the "API Key" button in the bottom left, generate, then paste into the `discourse_theme` CLI.
 
 Finally, choose "Create and Sync with new theme". You should see a success message, and some handy links to preview and manage the theme.
 
-Right now this is just an empty theme, so let's add back the customizations we created in chapter one of the tutorial.
+Right now this is just an empty theme, so let's add the customizations we created in chapter one of the tutorial to this new theme.
 
 ## Introducing custom code
 
@@ -49,7 +49,7 @@ export default apiInitializer("1.8.0", (api) => {
   api.renderInOutlet(
     "discovery-list-container-top",
     <template>
-      <div class="welcome-banner">
+      <div class="custom-welcome-banner">
         {{#if currentUser}}
           Welcome back @{{currentUser.username}}
         {{else}}
@@ -64,7 +64,7 @@ export default apiInitializer("1.8.0", (api) => {
 Now open up `common/common.scss`, and paste in:
 
 ```css
-.welcome-banner {
+.custom-welcome-banner {
   background: green;
   color: white;
   text-align: center;
@@ -74,7 +74,7 @@ Now open up `common/common.scss`, and paste in:
 
 Assuming `discourse_theme` is still running in your terminal, these changes will have been synced up to your Discourse site instantly, and reflected in the theme preview. Try tweaking some of the text in the files and watch the result change in the preview.
 
-To start up `discourse_theme`'s syncing again without going through the full 'new' flow, run `discourse_theme watch .` from inside your theme's directory. Add `--reset` if you need to change your forum URL or API key.
+To start up `discourse_theme`'s syncing again without going through the full "new" flow, run `discourse_theme watch .` from inside your theme's directory. Add `--reset` if you need to change your forum URL or API key.
 
 ## Understanding the file structure
 

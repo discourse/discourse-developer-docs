@@ -4,7 +4,7 @@ short_title: 4 - Outlets
 id: theme-developer-tutorial-outlets
 ---
 
-Discourse uses the [Ember JS Framework](https://emberjs.com/) for its user-facing interface. On top of Ember, Discourse provides a number of APIs to allow themes to customize the user interface. The most commonly-used API is Plugin Outlets.
+Discourse uses the [Ember JS Framework](https://emberjs.com/) for its user interface. On top of Ember, Discourse provides a number of APIs to allow themes to customize the user interface. The most commonly-used API is Plugin Outlets.
 
 These outlets are positioned throughout Discourse core, and allow themes to render Ember Components inside them. Those components are given access to some contextual information called "outlet args".
 
@@ -12,13 +12,13 @@ Some outlets also "wrap" part of the core user interface, which allows themes to
 
 ## Choosing an outlet
 
-In the earlier chapter of this tutorial, you used `api.renderInOutlet` to render a component into the "discovery-list-container-top" outlet. But how do we know what outlets are available, where they're located, and what outlet args are available?
+In the earlier chapter of this tutorial, you used `api.renderInOutlet` to render a component into the `discovery-list-container-top` outlet. But how do we know what outlets are available, where they're located, and what outlet args are available?
 
 Enter: the discourse developer toolbar. If you're running Discourse in a local development environment, you may have spotted this floating on the left-hand side of the screen. If you're developing a theme against a production Discourse environment, open the browser developer console and run `enableDevTools()` to make it appear.
 
 To see the location of all outlets on the current page, click the 🔌 icon in the developer toolbar. You should now see a bunch of green & blue placeholders throughout the application. Green placeholders are for simple outlets where you can render new content. Blue placeholders appear at the beginning and end of each "wrapper outlet".
 
-When you mouseover an outlet, a tooltip will show the available outletArgs, and a button to write each argument to the browser developer console to explore in more detail.
+When you mouseover an outlet, a tooltip will show the available `outletArgs`, and a button to write each argument to the browser developer console to explore in more detail.
 
 ## Rendering a simple component
 
@@ -42,7 +42,7 @@ api.renderInOutlet("some-outlet", <template>Hello World</template>);
 
 Inside the `<template>` you can use handlebars syntax to render simple HTML, dynamic content, and other components. We'll cover a few things here, but [The Ember Guides](https://guides.emberjs.com/release/components/) are the best place to learn more about the syntax and everything that's possible.
 
-To access javascript variables from inside the template, you can wrap your variable name in double curly brackets. That's the technique we used in the earlier chapters:
+To access JavaScript variables from inside the template, you can wrap your variable name in double curly brackets. That's the technique we used in the earlier chapters:
 
 ```gjs
 const currentUser = api.getCurrentUser();
@@ -50,7 +50,7 @@ const currentUser = api.getCurrentUser();
 api.renderInOutlet(
   "discovery-list-container-top",
   <template>
-    <div class="welcome-banner">
+    <div class="custom-welcome-banner">
       {{#if currentUser}}
         Welcome back @{{currentUser.username}}
       {{else}}
@@ -67,11 +67,11 @@ If you use the developer tools to find the `discovery-list-container-top` outlet
 
 ```
 api.renderInOutlet("discovery-list-container-top", <template>
-  <div class="welcome-banner">
+  <div class="custom-welcome-banner">
     {{#if currentUser}}
       Welcome back @{{currentUser.username}}.
     {{else}}
-	  Welcome to our community.
+      Welcome to our community.
     {{/if}}
     You're viewing
     {{#if @outletArgs.category}}
@@ -95,11 +95,11 @@ For more advanced use-cases, we need a place to store state and JS logic inside 
 import Component from "@glimmer/component";
 import { service } from "@ember/service";
 
-class WelcomeBanner extends Component {
+class CustomWelcomeBanner extends Component {
   @service currentUser;
 
   <template>
-    <div class="welcome-banner">
+    <div class="custom-welcome-banner">
       {{#if this.currentUser}}
         Welcome back @{{this.currentUser.username}}.
       {{else}}
@@ -112,17 +112,17 @@ class WelcomeBanner extends Component {
 
 You can put this code anywhere that you can access from the initializer. That could mean simply adding it to the top of the file. But in general, once you reach the complexity of a class-based component, it's best to put it in its own file, export it, and then import from the initializer.
 
-So, let's go ahead and create a new file: `javascripts/discourse/components/welcome-banner.gjs`, and include this new component as the default export:
+So, let's go ahead and create a new file: `javascripts/discourse/components/custom-welcome-banner.gjs`, and include this new component as the default export:
 
 ```gjs
 import Component from "@glimmer/component";
 import { service } from "@ember/service";
 
-export default class WelcomeBanner extends Component {
+export default class CustomWelcomeBanner extends Component {
   @service currentUser;
 
   <template>
-    <div class="welcome-banner">
+    <div class="custom-welcome-banner">
       {{#if this.currentUser}}
         Welcome back @{{this.currentUser.username}}.
       {{else}}
@@ -137,16 +137,16 @@ Then, back in the initializer, we can import it using a "relative import" at the
 
 ```gjs
 import { apiInitializer } from "discourse/lib/api";
-import WelcomeBanner from "../components/welcome-banner";
+import CustomWelcomeBanner from "../components/custom-welcome-banner";
 
 export default apiInitializer((api) => {
-  api.renderInOutlet("discovery-list-container-top", WelcomeBanner);
+  api.renderInOutlet("discovery-list-container-top", CustomWelcomeBanner);
 });
 ```
 
 ## Wrapper Outlets
 
-We won't explore them in this tutorial. But FYI, Wrapper Outlets work almost exactly the same as normal outlets. The only difference is that your component will replace any core content inside the wrapper. For example, rendering into the "home-logo-contents" outlet would replace the site logo with your own component.
+We won't explore them in this tutorial, but Wrapper Outlets work almost exactly the same as normal outlets. The only difference is that your component will replace any core content inside the wrapper. For example, rendering into the "home-logo-contents" outlet would replace the site logo with your own component.
 
 If you want to re-render the wrapped core implementation inside your component, you can use Ember's `{{yield}}` keyword.
 

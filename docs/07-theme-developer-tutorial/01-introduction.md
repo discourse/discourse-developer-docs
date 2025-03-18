@@ -26,13 +26,13 @@ Technically, themes and theme components are implemented in very similar ways, s
 
 Discourse themes and theme components can either be Local or Remote. Local themes are created & stored on a single Discourse installation, and work well for simple community-specific customizations.
 
-Once your theme becomes more complex, or if you want to share it with other communities, it's beneficial to make it a Remote Theme. These are stored on GitHub (or another Git hosting system), and can be installed on any community using their URL.
+Once your theme becomes more complex, or if you want to share it with other communities, it's beneficial to make it a Remote Theme. These are stored on GitHub (or another Git hosting system), and can be installed on any community using the repository URL.
 
 All the themes in the #theme and #theme-component categories are remote themes.
 
 ## Getting started with a local theme
 
-Let's kick things off by creating a new local theme! If you have your own Discourse community or [a local development environment](https://meta.discourse.org/t/developing-discourse-using-a-dev-container/336366), then log in as an administrator and visit the Appearance -> Themes section of the admin panel.
+Let's kick things off by creating a new local theme! If you have your own Discourse community or [a local development environment](https://meta.discourse.org/t/developing-discourse-using-a-dev-container/336366), then log in as an administrator and visit the Appearance -> Themes and components section of the admin interface, or go directly to `/admin/config/customize/themes`
 
 If you don't have your own community, then you can log into the public ["Theme Creator"](https://meta.discourse.org/t/get-started-with-theme-creator-and-the-theme-cli/108444) community, visit your profile page, and then choose the "Themes" tab.
 
@@ -49,15 +49,15 @@ The code editor has a number of tabs to add code to your theme. When you open a 
 5. Footer
 6. JS
 
-The "show advanced" toggle can be used to show a few more tabs. Some of those are fairly niche, so we won't go into them for this tutorial. You may also notice the "Mobile" and "Desktop" groups. Those exist for historical reasons, but for new development we recommend implementing everything under 'Common', and using CSS breakpoints for any device-specific tweaks.
+The "show advanced" toggle can be used to show a few more tabs. Some of those are fairly niche, so we won't go into them for this tutorial. You may also notice the "Mobile" and "Desktop" groups. Those exist for historical reasons, but for new development we recommend implementing everything under "Common", and using CSS breakpoints for any device-specific tweaks.
 
 ### Hello World
 
 Let's start with a basic local theme. We're going to add a big "Hello World!" banner under the Discourse header. In the "After Header" tab, paste this HTML code:
 
 ```html
-<div class="welcome-banner">
-  <h1 class="hello-world">Hello World!</h1>
+<div class="hello-world-banner">
+  <h2 class="hello-world">Hello World!</h2>
 </div>
 ```
 
@@ -82,7 +82,7 @@ And in the CSS tab, add this:
 
 Now hit the save button, then click "Preview". You should see something like:
 
-![12|690x406, 75%](/assets/beginners-guide-12.PNG)
+![Hello world welcome banner|690x406, 75%](/assets/beginners-guide-12.PNG)
 
 Congratulations! You just created your first Discourse theme! :tada:
 
@@ -100,7 +100,7 @@ const currentUser = api.getCurrentUser();
 api.renderInOutlet(
   "discovery-list-container-top",
   <template>
-    <div class="welcome-banner">
+    <div class="custom-welcome-banner">
       {{#if currentUser}}
         Welcome back @{{currentUser.username}}
       {{else}}
@@ -114,7 +114,7 @@ api.renderInOutlet(
 Then jump back to the CSS tab, and add this new rule:
 
 ```css
-.welcome-banner {
+.custom-welcome-banner {
   background: green;
   color: white;
   text-align: center;

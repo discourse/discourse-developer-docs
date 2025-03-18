@@ -12,7 +12,7 @@ This introduction aims to provide a map of all the tools and APIs for theme deve
 
 ## Themes vs. Theme Components
 
-**Discourse Themes** can be used to customize the frontend user experience using CSS and Javascript. Each theme has its own git repository, and community admins can generally install and manage them via the Discourse admin panel, even on shared hosting platforms.
+**Discourse Themes** can be used to customize the frontend user experience using CSS and JavaScript. Each theme has its own git repository, and community admins can generally install and manage them via the Discourse admin panel, even on shared hosting platforms.
 
 **Theme Components** are themes which are intended for use alongside other Theme Components, as part of an overall Theme. From a development point of view, Theme Components and Themes are almost identical. In these guides, the phrase "Theme" and "Theme Component" are used interchangeably.
 
