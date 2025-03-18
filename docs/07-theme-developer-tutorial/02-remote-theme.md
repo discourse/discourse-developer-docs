@@ -30,15 +30,7 @@ Right now this is just an empty theme, so let's add the customizations we create
 
 ## Introducing custom code
 
-Now it's time to start writing some code! Open up the `my-first-theme` directory in your favorite text editor, then create a file called `common/after_header.html`. Paste in the HTML we used for the "After Header" tab in the last chapter:
-
-```html
-<div class="hello-world-banner">
-  <h1 class="hello-world">Hello World!</h1>
-</div>
-```
-
-Then, under `javascripts/discourse/api-initializers`, open up the auto-generated `.gjs` file and replace the content with the example from the last chapter:
+Now it's time to start writing some code! Open up the `my-first-theme` directory in your favorite text editor, then find the file inside `javascripts/discourse/api-initializers`. Open up the auto-generated `.gjs` file and replace the content with the example from the last chapter:
 
 ```gjs
 import { apiInitializer } from "discourse/lib/api";
