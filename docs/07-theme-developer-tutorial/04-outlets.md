@@ -66,21 +66,24 @@ To access contextual arguments passed to Ember Components, you can use the synta
 If you use the developer tools to find the `discovery-list-container-top` outlet, you'll see there are two contextual `outletArgs` available: `category` and `tag`. Let's use the category information to add the category name to our welcome banner:
 
 ```gjs
-api.renderInOutlet("discovery-list-container-top", <template>
-  <div class="custom-welcome-banner">
-    {{#if currentUser}}
-      Welcome back @{{currentUser.username}}.
-    {{else}}
-      Welcome to our community.
-    {{/if}}
-    You're viewing
-    {{#if @outletArgs.category}}
-      "{{@outletArgs.category.name}}" topics.
-    {{else}}
-      all topics.
-    {{/if}}
-  </div>
-</template>);
+api.renderInOutlet(
+  "discovery-list-container-top",
+  <template>
+    <div class="custom-welcome-banner">
+      {{#if currentUser}}
+        Welcome back @{{currentUser.username}}.
+      {{else}}
+        Welcome to our community.
+      {{/if}}
+      You're viewing
+      {{#if @outletArgs.category}}
+        "{{@outletArgs.category.name}}" topics.
+      {{else}}
+        all topics.
+      {{/if}}
+    </div>
+  </template>
+);
 ```
 
 Save that change, and check the preview in your browser. When you navigate between categories, the banner will update accordingly.

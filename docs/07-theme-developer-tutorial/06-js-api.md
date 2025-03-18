@@ -96,7 +96,7 @@ export default apiInitializer((api) => {
 `api.registerValueTransformer` allows you to inject logic into predefined parts of the Discourse JavaScript application. For example, you can add a `"home-logo-href"` transformer to link the logo to `example.com`:
 
 ```gjs
-api.registerValueTransformer("home-logo-href", () => "https://example.com")
+api.registerValueTransformer("home-logo-href", () => "https://example.com");
 ```
 
 For more information on Transformers, check out the [dedicated guide](https://meta.discourse.org/t/349954)
