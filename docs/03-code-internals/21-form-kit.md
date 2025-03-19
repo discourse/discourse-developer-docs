@@ -1132,7 +1132,7 @@ A collection will by default render as a `<div class="form-kit__collection>`, yo
 
 ## Primitive array
 
-If the shape of your data is an array of primitivez, eg: [1, 2, 3], form-kit is able to handle it. You just have to omit the name on the field in this case, as the name will be auto generated for you with the index.
+If the shape of your data is an array of primitives, eg: [1, 2, 3], form-kit is able to handle it. You just have to omit the name on the field in this case, as the name will be auto generated for you with the index.
 
 **Example**
 
