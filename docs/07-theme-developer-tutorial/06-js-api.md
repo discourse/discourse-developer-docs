@@ -22,7 +22,7 @@ export default apiInitializer((api) => {
 
 ### headerIcons
 
-`api.headerIcons` will allow you to add, remove and re-arrange icons in the header. For example, to add a new icon before the search icon, you'd do something like
+`api.headerIcons` will allow you to add, remove and re-arrange icons in the header. For example, to add a new icon before the search icon, you'd do something like:
 
 ```gjs
 import DButton from "discourse/components/d-button";
@@ -54,7 +54,7 @@ export default apiInitializer((api) => {
 api.replaceIcon(source, destination);
 ```
 
-With this method, you can easily replace any Discourse icon with another. For example, we have [a theme component](https://meta.discourse.org/t/change-the-like-icon/87748) that replaces the heart icon for like with a thumbs-up icon
+With this method, you can easily replace any Discourse icon with another. For example, we have [a theme component](https://meta.discourse.org/t/change-the-like-icon/87748) that replaces the heart icon for like with a thumbs-up icon.
 
 ### decorateCookedElement()
 
@@ -99,7 +99,7 @@ export default apiInitializer((api) => {
 api.registerValueTransformer("home-logo-href", () => "https://example.com");
 ```
 
-For more information on Transformers, check out the [dedicated guide](https://meta.discourse.org/t/349954)
+For more information on Transformers, check out the [dedicated guide](https://meta.discourse.org/t/349954).
 
 ## Finding more JS API methods
 
