@@ -497,7 +497,7 @@ Writing and debugging system specs can be tricky at times, especially when they 
 
 - `:trace` allows to capture a trace in a zip file which you can load at https://trace.playwright.dev or locally through `pnpm dlx playwright show-trace /path/to/trace.zip`
 
-```ruby
+```rb
 it "shows bar", trace: true do
   # code
 end
