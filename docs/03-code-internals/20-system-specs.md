@@ -6,7 +6,7 @@ id: system-specs
 
 ## Background
 
-Rails system specs are used to simulate the actions of a real user using the app in a browser. We use the `Playwright ruby  driver` which is becoming an industry standard. The tests run locally and in CI out of the box. Capybara is the test framework used on top of `rspec` to interact with the web browser, and it sends commands to `Playwright`.
+Rails system specs are used to simulate the actions of a real user using the app in a browser. We use the `Playwright ruby driver` which is becoming an industry standard. The tests run locally and in CI out of the box. Capybara is the test framework used on top of `rspec` to interact with the web browser, and it sends commands to `Playwright`.
 
 We currently only support running system specs in Chrome, make sure you have Chrome installed before proceeding. Run `pnpm i` to ensure Playwright is correctly setup.
 
