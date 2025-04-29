@@ -495,7 +495,7 @@ JS
 
 Writing and debugging system specs can be tricky at times, especially when they become "flaky" and start failing in strange ways. These debugging tools help with writing the specs in the first place and figuring out what is wrong.
 
-- `:trace` allows to capture a trace in a zip file which you can load at https://trace.playwright.dev or locally through `npx playwright show-trace /path/to/trace.zip`
+- `:trace` allows to capture a trace in a zip file which you can load at https://trace.playwright.dev or locally through `pnpm dlx playwright show-trace /path/to/trace.zip`
 
 ```ruby
 it "shows bar", trace: true do
