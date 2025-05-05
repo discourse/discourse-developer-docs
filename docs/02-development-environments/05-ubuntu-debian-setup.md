@@ -40,8 +40,10 @@ You will need the following packages on your system:
 - [Redis][redis_link]
 - [Node.js][node_link]
 - [pnpm][pnpm_link]
-- [MailHog][mh_link]
-- [ImageMagick][imagemagick_link]
+- [MailHog][mh_link]\*\*
+- [ImageMagick][imagemagick_link]\*\*
+
+_\*\* optional_
 
 Now that we have installed Discourse dependencies, let's move on to install Discourse itself.
 
