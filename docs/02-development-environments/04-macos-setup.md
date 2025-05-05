@@ -12,7 +12,7 @@ We'll assume that you don't have Ruby/Rails/Postgres/Redis installed on your Mac
 
 ## Install Discourse Dependencies
 
-You will need the following new packages on your system:
+You will need the following packages on your system:
 
 - [Git][git_link]
 - [rbenv][rbenv_link] or [asdf][asdf_link]
