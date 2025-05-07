@@ -18,17 +18,17 @@ To add preview screenshots to your theme:
 
 1. Create a folder called `screenshots` in the root directory of your theme
 2. Add two image files to this folder:
-   * `light.png` - Shows your theme in light mode
-   * `dark.png` - Shows your theme in dark mode
+   - `light.png` - Shows your theme in light mode
+   - `dark.png` - Shows your theme in dark mode
 
 ## Setting up the image files
 
 Your screenshot images must meet these requirements:
 
-* **Ratio**: 16:9 aspect ratio
-* **Dimensions**: 2560 × 1440 pixels (recommended)
-* **File size**: Under 1MB per image
-* **Format**: PNG format
+- **Ratio**: 16:9 aspect ratio
+- **Dimensions**: 2560 × 1440 pixels (recommended)
+- **File size**: Under 1MB per image
+- **Format**: PNG format
 
 > :information_source: Using the recommended dimensions ensures your screenshots look crisp on high-resolution displays while maintaining reasonable file sizes.
 
@@ -49,18 +49,18 @@ After creating your screenshots, you need to update your theme’s `about.json` 
 
 When taking screenshots of your theme:
 
-* Show the main interface components that make your theme unique.
-* Include examples of your theme’s color palette and typography.
-* Ensure both screenshots show the same view for easy comparison.
-* Use realistic content rather than placeholder text where possible.
+- Show the main interface components that make your theme unique.
+- Include examples of your theme’s color palette and typography.
+- Ensure both screenshots show the same view for easy comparison.
+- Use realistic content rather than placeholder text where possible.
 
 ### Image optimization
 
 Keep your images under the 1MB size limit by:
 
-* Using PNG optimization tools like [TinyPNG](https://tinypng.com/) or [ImageOptim](https://imageoptim.com/).
-* Removing unnecessary metadata from image files.
-* Considering slightly reduced dimensions if needed while maintaining the 16:9 ratio.
+- Using PNG optimization tools like [TinyPNG](https://tinypng.com/) or [ImageOptim](https://imageoptim.com/).
+- Removing unnecessary metadata from image files.
+- Considering slightly reduced dimensions if needed while maintaining the 16:9 ratio.
 
 ## Common issues and solutions
 
@@ -96,5 +96,5 @@ A: Use a full-screen browser window at 2560×1440 resolution with developer tool
 
 ## Additional resources
 
-* https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966
-* https://meta.discourse.org/t/developer-s-guide-to-discourse-themes/93648
+- https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966
+- https://meta.discourse.org/t/developer-s-guide-to-discourse-themes/93648
