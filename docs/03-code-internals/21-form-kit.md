@@ -17,7 +17,7 @@ Here is the most basic example of a form:
 ```gjs
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
-import Form from "discourse/form";
+import Form from "discourse/components/form";
 
 export default class MyForm extends Component {
   @action
@@ -1780,15 +1780,13 @@ The FormKit helper allows you to manipulate a form and its fields through a clea
 import formKit from "discourse/tests/helpers/form-kit";
 
 test("fill in input", async function (assert) {
-  await render(
-    <template>
-      <Form class="my-form" as |form data|>
-        <form.Field @name="foo" as |field|>
-          <field.Input />
-        </form.Field>
-      </Form>
-    </template>
-  );
+  await render(<template>
+    <Form class="my-form" as |form data|>
+      <form.Field @name="foo" as |field|>
+        <field.Input />
+      </form.Field>
+    </Form>
+  </template>);
 
   const myForm = formKit(".my-form");
 });
