@@ -505,7 +505,7 @@ end
 
 - `:video` allows to capture a video of your spec
 
-```ruby
+```rb
 it "shows bar", video: true do
   # code
 end
