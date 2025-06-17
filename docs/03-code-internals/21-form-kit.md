@@ -1329,14 +1329,14 @@ Field accepts a `@validate` property which allows you to define a callback funct
 
 - `name` (string): The name of the form field being validated.
 - `value` (string): The value of the form field being validated.
-- `data` (Object): The data object containing additional information for validation.
 - `handlers` (Object): An object containing handler functions.
+  - `data` (Object): The data object containing additional information for validation.
   - `handlers.addError` (Function): A function to add an error if validation fails.
 
 **Example**
 
 ```js
-validateUsername(name, value, data, { addError }) {
+validateUsername(name, value, { data, addError) {
   if (data.bar / 2 === value) {
     addError(name, { title: I18n.t(`foo.bar.${name}`), message: "That's not how maths work." });
   }
