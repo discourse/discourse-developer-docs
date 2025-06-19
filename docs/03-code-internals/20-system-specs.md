@@ -454,29 +454,33 @@ When testing UI interactions that trigger real-time updates—typically sent via
 
    On the server side, expose the last ID for the relevant `MessageBus` channel (usually via a serializer):
 
-    ```ruby
-    def foo_channel_last_id
-      MessageBus.last_id("/foo-channel")
-    end
-    ```
+   ```ruby
+   def foo_channel_last_id
+     MessageBus.last_id("/foo-channel")
+   end
+   ```
 
-    On the client side, use this ID when subscribing to the MessageBus channel:
+   On the client side, use this ID when subscribing to the MessageBus channel:
 
-    ```js
-    this.messageBus.subscribe(this.fooChannel, this.updateResult, this.args.foo_channel_last_id);
-    ```
+   ```js
+   this.messageBus.subscribe(
+     this.fooChannel,
+     this.updateResult,
+     this.args.foo_channel_last_id
+   );
+   ```
 
-    > ⚠️ Note: Be mindful that frequent calls to `MessageBus.last_id` can result in increased Redis traffic. If you're calling this in high-volume serializers or endpoints, consider optimizing to reduce the number of Redis hits—for example, by caching or batching where appropriate.
+   > ⚠️ Note: Be mindful that frequent calls to `MessageBus.last_id` can result in increased Redis traffic. If you're calling this in high-volume serializers or endpoints, consider optimizing to reduce the number of Redis hits—for example, by caching or batching where appropriate.
 
 2. **Run jobs immediately in your system specs.**
 
-    This ensures background jobs that publish messages (e.g., via `MessageBus.publish`) are executed synchronously during the test:
+   This ensures background jobs that publish messages (e.g., via `MessageBus.publish`) are executed synchronously during the test:
 
-    ```ruby
-    before do
-      Jobs.run_immediately!
-    end
-    ```
+   ```ruby
+   before do
+     Jobs.run_immediately!
+   end
+   ```
 
 ## Advanced Chrome Interaction
 
