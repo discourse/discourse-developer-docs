@@ -14,7 +14,7 @@ As we touched on in the last chapter, the main entrypoint for theme CSS is the `
 
 You can also use `desktop/desktop.scss` and `mobile/mobile.scss`, although we're increasingly moving away from these separate files and towards breakpoint-based styling in `common.scss`.
 
-But for more complex situations, you can put additional scss in files like `/stylesheets/my-styles.scss`, and import from `common.scss` like `@import "my-styles";`
+But for more complex situations, you can put additional scss in files like `/stylesheets/my-styles.scss`, and import from `common.scss` like `@import "my-styles";`.
 
 ## Using variables
 
@@ -35,7 +35,7 @@ Let's make use of this knowledge by updating our theme to use the theme colors f
 
 Great! Now your banner's colors will match the site color scheme, and automatically adjust based on light/dark modes.
 
-For more information about the variables available, check out [this document](https://meta.discourse.org/t/77551)
+For more information about the variables available, check out [this document](https://meta.discourse.org/t/77551).
 
 ## Finding CSS selectors to style
 
@@ -43,6 +43,6 @@ The number of elements and classes in Discourse can feel quite overwhelming from
 
 For example, let's assume you want to style all the buttons in Discourse. One approach would be to use DevTools and try to find every variation of every button and style it. But a better approach would be to see how core is styling buttons, and base your approach on that.
 
-To explore re-styling Discourse in more detail, check out [the Designer's guide to Discourse themes](https://meta.discourse.org/t/152002)
+To explore re-styling Discourse in more detail, check out [the Designer's guide to Discourse themes](https://meta.discourse.org/t/152002).
 
-Or if you're ready to explore more ways to add/change content in Discourse, let's go to the [next chapter](https://meta.discourse.org/t/357799)
+Or if you're ready to explore more ways to add/change content in Discourse, let's go to the [next chapter](https://meta.discourse.org/t/357799).
