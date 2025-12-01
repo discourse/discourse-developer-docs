@@ -86,7 +86,7 @@ Keep your images under the 1MB size limit by:
 ## FAQs
 
 **Q: Do I need both light and dark screenshots?**
-A: It is not required, but it's good practice to include both light and dark screenshots. If you only include one, the same ikage will be displayed for both light and dark schemes.
+A: It is not required, but it's good practice to include both light and dark screenshots. If you only include one, the same image will be displayed for both light and dark schemes. If no image is provided at all, a fallback will be displayed.
 
 **Q: Can I use a different image format than PNG?**
 A: PNG is recommended for its balance of quality and size. While other formats might work, PNG is the standard for Discourse theme screenshots.
