@@ -29,7 +29,7 @@ When authoring your plugin, look in the discourse handlebars templates (in `.hbs
 > :exclamation: If you want to see some of the places where plugin outlets exist, you can run the following command if you're on OSX or Linux:
 >
 > ```sh
-> git grep "<PluginOutlet" -- "*.hbs"
+> git grep "<PluginOutlet" -- "*.gjs"
 > ```
 
 @RGJ has also written [a theme component](https://meta.discourse.org/t/plugin-outlet-locations-theme-component/100673) to show their locations.
