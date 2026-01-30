@@ -29,7 +29,7 @@ When authoring your plugin, look in the discourse handlebars templates (in `.hbs
 > :exclamation: If you want to see some of the places where plugin outlets exist, you can run the following command if you're on OSX or Linux:
 >
 > ```sh
-> git grep "<PluginOutlet" -- "*.hbs"
+> git grep "<PluginOutlet" -- "*.gjs"
 > ```
 
 You can also display the plugin outlets on a Discourse site by turning on the [Discourse Developer Toolbar](https://meta.discourse.org/t/introducing-discourse-developer-toolbar/346215). Just type `enableDevTools()` in the browser console on a Discourse forum and click the plug icon that appears on the left side of the page.
