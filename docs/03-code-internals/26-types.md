@@ -4,7 +4,7 @@ short_title: JS type hinting & validation
 id: js-type-hinting
 ---
 
-Discourse ships type information for its JavaScript code. This can provide inline documentation, autocomplete, and other useful IDE features. It can also be used for some basic type validation, using the `@jscheck` directive.
+Discourse ships type information for its JavaScript code. This can provide inline documentation, autocomplete, and other useful IDE features. It can also be used for some basic type validation, using the `@ts-check` directive.
 
 Much of this will be automatically consumed by IDEs with TypeScript/JavaScript support. But for functionality in `.gjs` files, you'll need some specific configuration and/or IDE plugins.
 
@@ -28,7 +28,7 @@ Official themes/plugins, and the official skeletons, are all wired up for types.
 
 ## Enable checking for a file
 
-To enable type-checking for a specific file, add `/** @jscheck */` at the top. For some examples, search Discourse core for `@jscheck`.
+To enable type-checking for a specific file, add `/** @ts-check */` at the top. For some examples, search Discourse core for `@ts-check`.
 
 ## Limitations
 
