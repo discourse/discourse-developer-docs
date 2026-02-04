@@ -36,7 +36,7 @@ Discourse's build pipelines do not currently support `.ts` files. Types are buil
 
 We do not provide any guarantees about the accuracy of the types - they're provided on a best-effort basis. PRs to improve the JSDoc-based documentation in core are welcome.
 
-## Known Issues
+## Known Issues
 
 - When importing one gjs file from another, CLI checks will report "Cannot find module". This happens due to a bug in `glint`, which requires the `.gjs` file extension to be added to the type import. The problem can be worked-around by adding a type import alongside the regular extensionless import.
 
