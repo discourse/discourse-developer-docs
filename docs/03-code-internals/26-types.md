@@ -32,7 +32,7 @@ To enable type-checking for a specific file, add `/** @ts-check */` at the top. 
 
 ## Limitations
 
-Discourse's build pipelines do not currently support `.ts` files. Types are built & checked using `.js` files only.
+Discourse's build pipelines do not currently support `.ts` files. Types are built & checked using `.js` / `.gjs` files only.
 
 We do not provide any guarantees about the accuracy of the types - they're provided on a best-effort basis. PRs to improve the JSDoc-based documentation in core are welcome.
 
