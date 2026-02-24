@@ -67,7 +67,7 @@ Plugin outlets can be used to inject content into existing cells on desktop, or 
 
 ## Replacing the entire topic-list-item
 
-If you want to completely replace the core topic-list-item implementation, then you can use the `topic-list-item` Wrapper Plugin Outlet. This should only be done when your design differs so much from core that you don't want it to be affected by future core changes, and you don't need it to be compatible with other themes / plugins.
+If you want to completely replace the core topic-list-item implementation, then you can use the `topic-list-item` Wrapper Plugin Outlet. This should only be done when your design differs so much from core that you don't want it to be affected by future core changes, and you don't need it to be compatible with other themes/plugins.
 
 If using this strategy, you should take extra care to ensure that your code is well tested, and you should make sure that your theme/plugin users are aware of the caveats.
 
