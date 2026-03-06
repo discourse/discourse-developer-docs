@@ -8,7 +8,7 @@ Discourse includes hundreds of Plugin Outlets which can be used to inject new co
 
 # Choosing an outlet
 
-To find the name of a plugin outlet, search Discourse core for "`<PluginOutlet`", or use the [plugin outlet locations](https://meta.discourse.org/t/plugin-outlet-locations-theme-component/100673) theme component. (e.g. `topic-above-posts`).
+To find the name of a plugin outlet, search Discourse core for "`<PluginOutlet`", or use the [Discourse developer toolbar](https://meta.discourse.org/t/introducing-discourse-developer-toolbar/346215) feature. (e.g. `topic-above-posts`).
 
 # Wrapper outlets
 
